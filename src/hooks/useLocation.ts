@@ -3,12 +3,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { notification } from 'antd';
 import { locationApi } from '../api/endpoints/location';
-import { 
-  setProvinces, 
-  setDistricts, 
+import {
+  setProvinces,
+  setDistricts,
   setWards,
   clearDistricts,
-  clearWards 
+  clearWards
 } from '../store/slices/locationSlice';
 import type { RootState } from '../store';
 

@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react';
 import { notification } from 'antd';
 import { userApi } from '../api/endpoints/user';
-import type { User, PaginationMetadata, CreateUserInput } from '../types/user';
+import type { User, CreateUserInput } from '../types/user';
+import { PaginationMetadata } from '../types/common';
 
 export const useUsers = () => {
   const [users, setUsers] = useState<User[]>([]);
