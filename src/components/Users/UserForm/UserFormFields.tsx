@@ -1,44 +1,37 @@
 // src/components/Users/UserForm/UserFormFields.tsx
-import React from 'react';
-import { Form, Input, Select, DatePicker } from 'antd';
-import dayjs from 'dayjs';
-import LocationSelect from '../../common/LocationSelect';
+import React from "react";
+import { Form, Input, Select, DatePicker } from "antd";
+import LocationSelect from "../../common/LocationSelect";
+import { Role, Name_Role } from "../../../types/user";
 
 const UserFormFields: React.FC = () => (
   <>
-    <Form.Item
-      name="fullName"
-      label="Full Name"
-      rules={[{ required: true }]}
-    >
+    <Form.Item name="fullName" label="Full Name" rules={[{ required: true }]}>
       <Input />
     </Form.Item>
 
     <Form.Item
       name="email"
       label="Email"
-      rules={[{ required: true, type: 'email' }]}
+      rules={[{ required: true, type: "email" }]}
     >
       <Input />
     </Form.Item>
 
-    <Form.Item
-      name="pwd"
-      label="Password"
-      rules={[{ required: true }]}
-    >
+    <Form.Item name="password" label="Password" rules={[{ required: true }]}>
       <Input.Password />
     </Form.Item>
 
-    <Form.Item name="phone" label="Phone">
+    <Form.Item name="phone" label="Phone" rules={[{ required: true }]}>
       <Input />
     </Form.Item>
 
     <Form.Item name="role" label="Role" rules={[{ required: true }]}>
       <Select>
-        <Select.Option value="owner">Owner</Select.Option>
-        <Select.Option value="admin">Admin</Select.Option>
-        <Select.Option value="staff">Staff</Select.Option>
+        <Select.Option value={Role.OWNER}>{Name_Role[Role.OWNER]}</Select.Option>
+        <Select.Option value={Role.OWNER_MANAGER}>{Name_Role[Role.OWNER_MANAGER]}</Select.Option>
+        <Select.Option value={Role.CUSTOMER}>{Name_Role[Role.CUSTOMER]}</Select.Option>
+        <Select.Option value={Role.CUSTOMER_MANAGER}>{Name_Role[Role.CUSTOMER_MANAGER]}</Select.Option>
       </Select>
     </Form.Item>
 
@@ -46,6 +39,7 @@ const UserFormFields: React.FC = () => (
       <Select>
         <Select.Option value="male">Male</Select.Option>
         <Select.Option value="female">Female</Select.Option>
+        <Select.Option value="other">Other</Select.Option>
       </Select>
     </Form.Item>
 
@@ -53,11 +47,11 @@ const UserFormFields: React.FC = () => (
       <DatePicker format="YYYY-MM-DD" />
     </Form.Item>
 
-    <Form.Item name={['social', 'facebook']} label="Facebook">
+    <Form.Item name={["social", "facebook"]} label="Facebook">
       <Input />
     </Form.Item>
 
-    <Form.Item name={['social', 'zalo']} label="Zalo">
+    <Form.Item name={["social", "zalo"]} label="Zalo">
       <Input />
     </Form.Item>
 

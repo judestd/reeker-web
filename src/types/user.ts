@@ -1,4 +1,22 @@
 // src/types/user.ts
+export enum Role {
+  SUPER_ADMIN = 'super_admin',
+  ADMIN = 'admin',
+  OWNER = 'owner', // Đầu chủ
+  OWNER_MANAGER = 'owner_manager', // Quản lý đầu chủ
+  CUSTOMER = 'customer', // Đầu khách
+  CUSTOMER_MANAGER = 'customer_manager', // Quản lý đầu khách
+}
+
+export const Name_Role = {
+  [Role.SUPER_ADMIN]: 'Super Admin',
+  [Role.ADMIN]: 'Admin',
+  [Role.OWNER]: 'Đầu chủ',
+  [Role.OWNER_MANAGER]: 'Quản lý đầu chủ',
+  [Role.CUSTOMER]: 'Đầu khách',
+  [Role.CUSTOMER_MANAGER]: 'Quản lý đầu khách',
+}
+
 export interface User {
   id: string;
   fullName: string;
@@ -26,33 +44,10 @@ export interface User {
   updatedAt: string;
 }
 
-export interface PaginationMetadata {
-  totalDocs: number;
-  limit: number;
-  totalPages: number;
-  page: number;
-  pagingCounter: number;
-  hasPrevPage: boolean;
-  hasNextPage: boolean;
-  prevPage: number | null;
-  nextPage: number | null;
-}
-
-export interface ApiResponse<T> {
-  code: string;
-  success: boolean;
-  data: T;
-  error: null | string;
-  metadata: {
-    timestamp: string;
-    pagination: PaginationMetadata;
-  };
-}
-
 export interface CreateUserInput {
   fullName: string;
   email: string;
-  pwd: string;
+  password: string;
   phone?: string;
   role: string;
   social?: {

@@ -18,6 +18,7 @@ export const useLogin = () => {
     try {
       // Login
       const loginResponse = await authApi.login({ ...values, isAdmin: true });
+      
       const { access_token } = loginResponse.data.data;
       
       // Save token
@@ -28,7 +29,7 @@ export const useLogin = () => {
       const user = userResponse.data.data;
       
       // Update store
-      dispatch(setCredentials({ user, access_token }));
+      dispatch(setCredentials({ user, token: access_token }));
 
       notification.success({
         message: 'Login Successful',

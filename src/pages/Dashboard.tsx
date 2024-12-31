@@ -13,7 +13,7 @@ const Dashboard: React.FC = () => {
   return (
     <div>
       <PageHeader 
-        title={`Welcome, ${user.name}!`}
+        title={`Welcome, ${user.fullName}!`}
         subtitle="Here's your dashboard overview"
       />
       <DashboardStats teams={teams} user={user} />
