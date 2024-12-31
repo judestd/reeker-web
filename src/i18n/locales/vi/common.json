@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "dashboard": "Tổng quan",
+    "teams": "Nhóm",
+    "members": "Thành viên",
+    "users": "Người dùng",
+    "notifications": "Thông báo"
+  },
+  "actions": {
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "save": "Lưu",
+    "cancel": "Hủy"
+  }
+}

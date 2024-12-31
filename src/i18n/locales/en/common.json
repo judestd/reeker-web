@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "teams": "Teams",
+    "members": "Members",
+    "users": "Users",
+    "notifications": "Notifications"
+  },
+  "actions": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel"
+  }
+}

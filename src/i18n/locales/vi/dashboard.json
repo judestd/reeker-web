@@ -1,0 +1,8 @@
+{
+  "welcome": "Chào mừng, {{name}}!",
+  "stats": {
+    "totalTeams": "Tổng số nhóm",
+    "totalMembers": "Tổng số thành viên",
+    "activeMembers": "Thành viên đang hoạt động"
+  }
+}
