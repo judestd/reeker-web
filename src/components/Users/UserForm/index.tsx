@@ -1,23 +1,30 @@
 // src/components/Users/UserForm/index.tsx
-import React from 'react';
-import { Form, Modal } from 'antd';
-import { CreateUserInput } from '../../../types/user';
-import UserFormFields from './UserFormFields';
+import React from "react";
+import { Form, Modal } from "antd";
+import { CreateUserInput } from "../../../types/user";
+import UserFormFields from "./UserFormFields";
 
 interface UserFormProps {
   open: boolean;
   onCancel: () => void;
-  onSubmit: (values: CreateUserInput) => Promise<void>;
+  onSubmit: (values: CreateUserInput) => Promise<boolean>;
   loading?: boolean;
+  form: any;
 }
 
 const UserForm: React.FC<UserFormProps> = ({
   open,
   onCancel,
   onSubmit,
-  loading
+  loading,
+  form,
 }) => {
-  const [form] = Form.useForm();
+  const handleFinish = async (values: CreateUserInput) => {
+    const success = await onSubmit(values);
+    if (success) {
+      form.resetFields();
+    }
+  };
 
   return (
     <Modal
@@ -28,12 +35,8 @@ const UserForm: React.FC<UserFormProps> = ({
       confirmLoading={loading}
       width={720}
     >
-      <Form
-        form={form}
-        layout="vertical"
-        onFinish={onSubmit}
-      >
-        <UserFormFields />
+      <Form form={form} layout="vertical" onFinish={handleFinish}>
+        <UserFormFields form={form} />
       </Form>
     </Modal>
   );

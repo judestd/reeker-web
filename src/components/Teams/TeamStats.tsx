@@ -1,15 +1,19 @@
-import React from 'react';
-import { Card, Statistic, Row, Col } from 'antd';
-import { TeamOutlined, UserOutlined, ClockCircleOutlined } from '@ant-design/icons';
-import type { User } from '../../types/user';
+import React from "react";
+import { Card, Statistic, Row, Col } from "antd";
+import {
+  TeamOutlined,
+  UserOutlined,
+  ClockCircleOutlined,
+} from "@ant-design/icons";
+import type { User } from "../../types/user";
 
 interface TeamStatsProps {
   members: User[];
 }
 
 const TeamStats: React.FC<TeamStatsProps> = ({ members }) => {
-  const activeMembers = members.filter(m => m.status === 'active').length;
-  const temporaryLeave = members.filter(m => m.isTemporaryLeave).length;
+  const activeMembers = members.filter((m) => m.isActive).length;
+  const temporaryLeave = members.filter((m) => m.isActive).length;
 
   return (
     <Row gutter={16}>
@@ -28,7 +32,7 @@ const TeamStats: React.FC<TeamStatsProps> = ({ members }) => {
             title="Active Members"
             value={activeMembers}
             prefix={<UserOutlined />}
-            valueStyle={{ color: '#3f8600' }}
+            valueStyle={{ color: "#3f8600" }}
           />
         </Card>
       </Col>
@@ -38,7 +42,7 @@ const TeamStats: React.FC<TeamStatsProps> = ({ members }) => {
             title="On Leave"
             value={temporaryLeave}
             prefix={<ClockCircleOutlined />}
-            valueStyle={{ color: '#cf1322' }}
+            valueStyle={{ color: "#cf1322" }}
           />
         </Card>
       </Col>

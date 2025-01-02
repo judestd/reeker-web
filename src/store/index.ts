@@ -14,12 +14,19 @@ const persistConfig = {
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 
+const locationPersistConfig = {
+  key: 'location',
+  storage,
+};
+
+const persistedLocationReducer = persistReducer(locationPersistConfig, locationReducer);
+
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     teams: teamReducer,
     members: memberReducer,
-    location: locationReducer
+    location: persistedLocationReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

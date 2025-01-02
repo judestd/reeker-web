@@ -1,21 +1,21 @@
-import React, { useMemo } from 'react';
-import { Space, message } from 'antd';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store';
-import TeamHeader from '../components/Teams/TeamHeader';
-import TeamList from '../components/Teams/TeamList';
-import TeamForm from '../components/Teams/TeamForm';
-import TeamDetails from '../components/Teams/TeamDetails';
-import AddMemberModal from '../components/Teams/AddMemberModal';
-import LoadingSpinner from '../components/common/LoadingSpinner';
-import { useTeamOperations } from '../hooks/useTeamOperations';
-import useTeamMembers from '../hooks/useTeamMembers';
-import { validateTeam } from '../utils/teamValidation';
-import type { Team } from '../types/user';
+import React, { useMemo } from "react";
+import { Space, message } from "antd";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
+import TeamHeader from "../components/Teams/TeamHeader";
+import TeamList from "../components/Teams/TeamList";
+import TeamForm from "../components/Teams/TeamForm";
+import TeamDetails from "../components/Teams/TeamDetails";
+import AddMemberModal from "../components/Teams/AddMemberModal";
+import LoadingSpinner from "../components/common/LoadingSpinner";
+import { useTeamOperations } from "../hooks/useTeamOperations";
+import useTeamMembers from "../hooks/useTeamMembers";
+import { validateTeam } from "../utils/teamValidation";
+import type { Team } from "../types/user";
 
 const Teams: React.FC = () => {
   const { teams, loading } = useSelector((state: RootState) => state.teams);
-  console.log(teams)
+  console.log(teams);
   const {
     selectedTeam,
     showAddMember,
@@ -27,20 +27,24 @@ const Teams: React.FC = () => {
     handleRemoveMember,
   } = useTeamOperations();
 
-  const memberIds = useMemo(() => 
-    selectedTeam?.members ?? [], 
-    [selectedTeam?.members]
+  const memberIds = useMemo(
+    () => selectedTeam?.members ?? [],
+    [selectedTeam?.members],
   );
 
-  const { members, loading: membersLoading, error: membersError } = useTeamMembers(memberIds);
+  const {
+    members,
+    loading: membersLoading,
+    error: membersError,
+  } = useTeamMembers(memberIds);
 
   const handleTeamSubmit = (values: Partial<Team>) => {
     const errors = validateTeam(values);
     if (errors.length) {
-      errors.forEach(error => message.error(error));
+      errors.forEach((error) => message.error(error));
       return;
     }
-    
+
     if (selectedTeam) {
       handleUpdateTeam({ ...selectedTeam, ...values });
     } else {
@@ -59,7 +63,11 @@ const Teams: React.FC = () => {
 
   return (
     <LoadingSpinner spinning={isLoading}>
-      <Space direction="vertical" size="large" style={{ width: '100%', display: 'flex' }}>
+      <Space
+        direction="vertical"
+        size="large"
+        style={{ width: "100%", display: "flex" }}
+      >
         <TeamHeader onCreateTeam={() => setSelectedTeam(null)} />
 
         {selectedTeam ? (
@@ -70,16 +78,10 @@ const Teams: React.FC = () => {
             onRemoveMember={handleRemoveMember}
           />
         ) : (
-          <TeamForm 
-            onSubmit={handleTeamSubmit}
-            initialValues={selectedTeam}
-          />
+          <TeamForm onSubmit={handleTeamSubmit} initialValues={selectedTeam} />
         )}
 
-        <TeamList
-          onEdit={handleEdit}
-          onView={handleView}
-        />
+        <TeamList onEdit={handleEdit} onView={handleView} />
 
         <AddMemberModal
           visible={showAddMember}

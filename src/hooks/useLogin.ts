@@ -7,6 +7,8 @@ import { authApi } from '../api/endpoints/auth';
 import { userApi } from '../api/endpoints/user';
 import { setCredentials } from '../store/slices/authSlice';
 import { setStoredToken } from '../utils/auth';
+import { locationApi } from '../api/endpoints/location';
+import { setLocationData } from '../store/slices/locationSlice';
 
 export const useLogin = () => {
   const [loading, setLoading] = useState(false);
@@ -30,6 +32,20 @@ export const useLogin = () => {
       
       // Update store
       dispatch(setCredentials({ user, token: access_token }));
+
+      // Fetch location data
+      const [provincesResponse, districtsResponse, wardsResponse] = await Promise.all([
+        locationApi.getAllProvinces(),
+        locationApi.getAllDistricts(),
+        locationApi.getAllWards()
+      ]);
+
+      const provinces = provincesResponse.data.data;
+      const districts = districtsResponse.data.data;
+      const wards = wardsResponse.data.data;
+
+      // Update store with location data
+      dispatch(setLocationData({ provinces, districts, wards }));
 
       notification.success({
         message: 'Login Successful',

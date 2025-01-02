@@ -1,5 +1,5 @@
 export const API_CONFIG = {
-  baseURL: 'https://2jgqvlnb-3003.asse.devtunnels.ms',
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3003',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

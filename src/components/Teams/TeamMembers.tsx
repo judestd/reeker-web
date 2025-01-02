@@ -1,6 +1,6 @@
-import React from 'react';
-import { Table, Tag, Button } from 'antd';
-import { User } from '../../types/user';
+import React from "react";
+import { Table, Tag, Button } from "antd";
+import { User } from "../../types/user";
 
 interface TeamMembersProps {
   members: User[];
@@ -8,30 +8,34 @@ interface TeamMembersProps {
   loading?: boolean;
 }
 
-const TeamMembers: React.FC<TeamMembersProps> = ({ members, onRemoveMember, loading }) => {
+const TeamMembers: React.FC<TeamMembersProps> = ({
+  members,
+  onRemoveMember,
+  loading,
+}) => {
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
     },
     {
-      title: 'Role',
-      dataIndex: 'role',
-      key: 'role',
+      title: "Role",
+      dataIndex: "role",
+      key: "role",
       render: (role: string) => <Tag color="blue">{role}</Tag>,
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
       render: (status: string) => (
-        <Tag color={status === 'active' ? 'green' : 'red'}>{status}</Tag>
+        <Tag color={status === "active" ? "green" : "red"}>{status}</Tag>
       ),
     },
     {
-      title: 'Actions',
-      key: 'actions',
+      title: "Actions",
+      key: "actions",
       render: (_: any, record: User) => (
         <Button danger onClick={() => onRemoveMember(record.id)}>
           Remove

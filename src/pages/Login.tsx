@@ -1,7 +1,7 @@
 // src/pages/Login.tsx
-import React from 'react';
-import { Form, Input, Button, Card } from 'antd';
-import { useLogin } from '../hooks/useLogin';
+import React from "react";
+import { Form, Input, Button, Card } from "antd";
+import { useLogin } from "../hooks/useLogin";
 
 const Login: React.FC = () => {
   const { handleLogin, loading } = useLogin();
@@ -19,8 +19,8 @@ const Login: React.FC = () => {
             name="email"
             label="Email"
             rules={[
-              { required: true, message: 'Please enter your email' },
-              { type: 'email', message: 'Please enter a valid email' }
+              { required: true, message: "Please enter your email" },
+              { type: "email", message: "Please enter a valid email" },
             ]}
           >
             <Input size="large" placeholder="Enter your email" />
@@ -29,20 +29,15 @@ const Login: React.FC = () => {
           <Form.Item
             name="password"
             label="Password"
-            rules={[
-              { required: true, message: 'Please enter your password' }
-            ]}
+            rules={[{ required: true, message: "Please enter your password" }]}
           >
-            <Input.Password 
-              size="large" 
-              placeholder="Enter your password" 
-            />
+            <Input.Password size="large" placeholder="Enter your password" />
           </Form.Item>
 
           <Form.Item>
-            <Button 
-              type="primary" 
-              htmlType="submit" 
+            <Button
+              type="primary"
+              htmlType="submit"
               loading={loading}
               className="w-full"
               size="large"

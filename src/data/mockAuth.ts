@@ -1,15 +1,16 @@
-import { User } from '../types/user';
+import { User, Role } from '../types/user';
 import { generateId } from '../utils/helpers';
 
 export const mockAdmin: User = {
   id: generateId(),
-  name: 'Admin User',
   fullName: 'Admin User',
   email: 'admin@example.com',
-  role: 'ADMIN',
+  role: Role.ADMIN,
   isActive: true,
-  status: 'active',
-  avatarUrl: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Admin'
+  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Admin',
+  isAdmin: true,
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
 };
 
 export const mockAuthService = {

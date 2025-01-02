@@ -1,7 +1,7 @@
-import React from 'react';
-import { Card, Row, Col, Statistic } from 'antd';
-import { TeamOutlined, UserOutlined } from '@ant-design/icons';
-import { Team, User } from '../../types/user';
+import React from "react";
+import { Card, Row, Col, Statistic } from "antd";
+import { TeamOutlined, UserOutlined } from "@ant-design/icons";
+import { Team, User } from "../../types/user";
 
 interface DashboardStatsProps {
   teams: Team[];
@@ -21,11 +21,7 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({ teams, user }) => (
     </Col>
     <Col span={8}>
       <Card>
-        <Statistic
-          title="Role"
-          value={user?.role}
-          prefix={<UserOutlined />}
-        />
+        <Statistic title="Role" value={user?.role} prefix={<UserOutlined />} />
       </Card>
     </Col>
   </Row>

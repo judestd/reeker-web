@@ -1,7 +1,7 @@
-import React from 'react';
-import { Modal, Form, Button } from 'antd';
-import { User } from '../../../types/user';
-import MemberSelect from './MemberSelect';
+import React from "react";
+import { Modal, Form, Button } from "antd";
+import { User } from "../../../types/user";
+import MemberSelect from "./MemberSelect";
 
 interface AddMemberModalProps {
   visible: boolean;
@@ -33,18 +33,18 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({
       footer={null}
       className="top-8"
     >
-      <Form 
-        form={form} 
+      <Form
+        form={form}
         onFinish={handleSubmit}
         layout="vertical"
         className="pt-4"
       >
         <MemberSelect availableUsers={availableUsers} />
-        
+
         <Form.Item className="mb-0">
-          <Button 
-            type="primary" 
-            htmlType="submit" 
+          <Button
+            type="primary"
+            htmlType="submit"
             loading={loading}
             className="w-full"
           >

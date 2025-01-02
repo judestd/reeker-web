@@ -5,12 +5,18 @@ import type { ApiResponse } from '../../types/common';
 import type { Province, District, Ward } from '../../types/location';
 
 export const locationApi = {
-  getProvinces: () =>
+  getAllProvinces: () =>
     apiClient.get<ApiResponse<Province[]>>('/location/provinces'),
 
-  getDistricts: (provinceCode: string) =>
+  getAllDistricts: () =>
+    apiClient.get<ApiResponse<District[]>>('/location/districts'),
+
+  getAllWards: () =>
+    apiClient.get<ApiResponse<Ward[]>>('/location/wards'),
+
+  getDistrictsByProvinceCode: (provinceCode: string) =>
     apiClient.get<ApiResponse<District[]>>(`/location/districts/${provinceCode}`),
 
-  getWards: (districtCode: string) =>
+  getWardsByDistrictCode: (districtCode: string) =>
     apiClient.get<ApiResponse<Ward[]>>(`/location/wards/${districtCode}`)
 };

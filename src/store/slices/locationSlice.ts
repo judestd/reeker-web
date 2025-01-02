@@ -1,4 +1,3 @@
-// src/store/slices/locationSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Province, District, Ward } from '../../types/location';
 
@@ -31,6 +30,11 @@ const locationSlice = createSlice({
     setWards: (state, action: PayloadAction<Ward[]>) => {
       state.wards = action.payload;
     },
+    setLocationData: (state, action: PayloadAction<{ provinces: Province[]; districts: District[]; wards: Ward[] }>) => {
+      state.provinces = action.payload.provinces;
+      state.districts = action.payload.districts;
+      state.wards = action.payload.wards;
+    },
     clearDistricts: (state) => {
       state.districts = [];
       state.wards = [];
@@ -45,6 +49,7 @@ export const {
   setProvinces, 
   setDistricts, 
   setWards,
+  setLocationData,
   clearDistricts,
   clearWards
 } = locationSlice.actions;

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Input, Select, Space } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import React from "react";
+import { Input, Select, Space } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 
 const { Search } = Input;
 
@@ -27,8 +27,8 @@ const UserListHeader: React.FC<UserListHeaderProps> = ({
       style={{ width: 200 }}
       onChange={(value) => onFilterChange({ role: value })}
       options={[
-        { label: 'Admin', value: 'ADMIN' },
-        { label: 'User', value: 'USER' },
+        { label: "Admin", value: "ADMIN" },
+        { label: "User", value: "USER" },
       ]}
     />
     <Select
@@ -37,8 +37,8 @@ const UserListHeader: React.FC<UserListHeaderProps> = ({
       style={{ width: 200 }}
       onChange={(value) => onFilterChange({ status: value })}
       options={[
-        { label: 'Active', value: true },
-        { label: 'Inactive', value: false },
+        { label: "Active", value: true },
+        { label: "Inactive", value: false },
       ]}
     />
   </Space>

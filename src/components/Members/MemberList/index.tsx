@@ -1,10 +1,14 @@
-import React from 'react';
-import { Table } from 'antd';
-import type { User } from '../../../types/user';
-import type { MemberListProps } from './types';
-import { useMemberListConfig } from './hooks';
+import React from "react";
+import { Table } from "antd";
+import type { User } from "../../../types/user";
+import type { MemberListProps } from "./types";
+import { useMemberListConfig } from "./hooks";
 
-const MemberList: React.FC<MemberListProps> = ({ members, loading, onEdit }) => {
+const MemberList: React.FC<MemberListProps> = ({
+  members,
+  loading,
+  onEdit,
+}) => {
   const { columns, tableConfig } = useMemberListConfig(onEdit);
 
   return (
