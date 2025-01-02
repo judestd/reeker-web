@@ -4,7 +4,12 @@ import { Form, Input, Select, DatePicker } from "antd";
 import LocationSelect from "../../common/LocationSelect";
 import { Role, Name_Role } from "../../../types/user";
 
-const UserFormFields: React.FC = () => (
+interface UserFormFieldsProps {
+  form: any;
+  isEditing?: boolean;
+}
+
+const UserFormFields: React.FC<UserFormFieldsProps> = ({ form, isEditing }) => (
   <>
     <Form.Item name="fullName" label="Full Name" rules={[{ required: true }]}>
       <Input />
@@ -18,7 +23,11 @@ const UserFormFields: React.FC = () => (
       <Input />
     </Form.Item>
 
-    <Form.Item name="password" label="Password" rules={[{ required: true }]}>
+    <Form.Item
+      name="password"
+      label="Password"
+      rules={isEditing ? [] : [{ required: true }]}
+    >
       <Input.Password />
     </Form.Item>
 
@@ -28,10 +37,21 @@ const UserFormFields: React.FC = () => (
 
     <Form.Item name="role" label="Role" rules={[{ required: true }]}>
       <Select>
-        <Select.Option value={Role.OWNER}>{Name_Role[Role.OWNER]}</Select.Option>
-        <Select.Option value={Role.OWNER_MANAGER}>{Name_Role[Role.OWNER_MANAGER]}</Select.Option>
-        <Select.Option value={Role.CUSTOMER}>{Name_Role[Role.CUSTOMER]}</Select.Option>
-        <Select.Option value={Role.CUSTOMER_MANAGER}>{Name_Role[Role.CUSTOMER_MANAGER]}</Select.Option>
+        <Select.Option value={Role.OWNER}>
+          {Name_Role[Role.OWNER]}
+        </Select.Option>
+        <Select.Option value={Role.OWNER_MANAGER}>
+          {Name_Role[Role.OWNER_MANAGER]}
+        </Select.Option>
+        <Select.Option value={Role.CUSTOMER}>
+          {Name_Role[Role.CUSTOMER]}
+        </Select.Option>
+        <Select.Option value={Role.CUSTOMER_MANAGER}>
+          {Name_Role[Role.CUSTOMER_MANAGER]}
+        </Select.Option>
+        <Select.Option value={Role.DEPARTMENT_MANAGER}>
+          {Name_Role[Role.DEPARTMENT_MANAGER]}
+        </Select.Option>
       </Select>
     </Form.Item>
 
@@ -58,7 +78,7 @@ const UserFormFields: React.FC = () => (
     <Form.Item name="addressDetail" label="Address">
       <Input />
     </Form.Item>
-    <LocationSelect required />
+    <LocationSelect required form={form} />
   </>
 );
 

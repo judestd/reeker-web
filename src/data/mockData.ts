@@ -1,37 +1,36 @@
 import type { User, Team } from '../types/user';
+import { Role } from '../types/user';
 
 export const mockUsers: User[] = [
   {
     id: '1',
-    name: 'Admin User',
     fullName: 'Admin User',
     email: 'admin@example.com',
-    role: 'ADMIN',
-    teams: ['1'],
-    joinDate: '2023-01-01',
-    isTemporaryLeave: false,
-    status: 'active',
-    isActive: true
+    role: Role.ADMIN,
+    joinedDepartmentAt: '2023-01-01',
+    isActive: true,
+    isAdmin: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   },
   {
     id: '2',
-    name: 'Regular User',
     fullName: 'Regular User',
     email: 'user@example.com',
-    role: 'USER',
-    teams: ['1'],
-    joinDate: '2023-02-01',
-    isTemporaryLeave: false,
-    status: 'active',
-    isActive: true
+    role: Role.CUSTOMER,
+    joinedDepartmentAt: '2023-02-01',
+    isActive: true,
+    isAdmin: false,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   }
 ];
 
 export const mockTeams: Team[] = [
   {
-    id: '1',
+    id: 1,
     name: 'Development Team',
-    members: ['1', '2'],
-    createdAt: '2023-01-01'
+    members: mockUsers.filter(user => ['1', '2'].includes(user.id)).map(user => user.id),
+    createdAt: new Date().toISOString()
   }
 ];

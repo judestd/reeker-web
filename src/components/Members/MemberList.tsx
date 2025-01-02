@@ -18,7 +18,7 @@ const MemberList: React.FC<MemberListProps> = ({
       title: "Name",
       dataIndex: "name",
       key: "name",
-      sorter: (a: User, b: User) => a.name.localeCompare(b.name),
+      sorter: (a: User, b: User) => a.fullName.localeCompare(b.fullName),
       className: "text-gray-900 font-medium",
     },
     {
@@ -49,18 +49,18 @@ const MemberList: React.FC<MemberListProps> = ({
         </Tag>
       ),
       filters: [
-        { text: "Active", value: "active" },
-        { text: "Inactive", value: "inactive" },
+        { text: "Active", value: true },
+        { text: "Inactive", value: false },
       ],
-      onFilter: (value: string, record: User) => record.status === value,
+      onFilter: (value: string, record: User) => record.isActive === (value === 'true'),
     },
     {
       title: "Join Date",
       dataIndex: "joinDate",
       key: "joinDate",
       sorter: (a: User, b: User) => {
-        if (!a.joinDate || !b.joinDate) return 0;
-        return new Date(a.joinDate).getTime() - new Date(b.joinDate).getTime();
+        if (!a.joinedDepartmentAt || !b.joinedDepartmentAt) return 0;
+        return new Date(a.joinedDepartmentAt).getTime() - new Date(b.joinedDepartmentAt).getTime();
       },
       className: "text-gray-600",
     },

@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
-import { Modal, Form, Select, Button } from 'antd';
-import { mockUsers } from '../../data/mockData';
+import React, { useMemo } from "react";
+import { Modal, Form, Select, Button } from "antd";
+import { mockUsers } from "../../data/mockData";
 
 interface AddMemberModalProps {
   visible: boolean;
@@ -24,9 +24,9 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({
     form.resetFields();
   };
 
-  const availableUsers = useMemo(() => 
-    mockUsers.filter(user => !currentMembers.includes(user.id)),
-    [currentMembers]
+  const availableUsers = useMemo(
+    () => mockUsers.filter((user) => !currentMembers.includes(user.id)),
+    [currentMembers],
   );
 
   return (
@@ -39,16 +39,16 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({
       <Form form={form} onFinish={handleSubmit}>
         <Form.Item
           name="userIds"
-          rules={[{ required: true, message: 'Please select members' }]}
+          rules={[{ required: true, message: "Please select members" }]}
         >
           <Select
             mode="multiple"
             placeholder="Select members"
-            style={{ width: '100%' }}
+            style={{ width: "100%" }}
           >
-            {availableUsers.map(user => (
+            {availableUsers.map((user) => (
               <Select.Option key={user.id} value={user.id}>
-                {user.name}
+                {user.fullName}
               </Select.Option>
             ))}
           </Select>

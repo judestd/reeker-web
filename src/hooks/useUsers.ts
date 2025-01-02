@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { notification } from 'antd';
 import { userApi } from '../api/endpoints/user';
-import type { User, CreateUserInput } from '../types/user';
+import type { User, CreateUserInput, UpdateUserInput } from '../types/user';
 import { PaginationMetadata } from '../types/common';
 
 export const useUsers = () => {
@@ -47,6 +47,48 @@ export const useUsers = () => {
     }
   };
 
+  const updateUser = async (id: string, data: UpdateUserInput) => {
+    setLoading(true);
+    try {
+      await userApi.updateUser(id, data);
+      notification.success({
+        message: 'Success',
+        description: 'User updated successfully'
+      });
+      fetchUsers(); // Refresh list
+      return true;
+    } catch (error) {
+      notification.error({
+        message: 'Error',
+        description: 'Failed to update user'
+      });
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const deleteUser = async (id: string) => {
+    setLoading(true);
+    try {
+      await userApi.deleteUser(id);
+      notification.success({
+        message: 'Success',
+        description: 'User deleted successfully'
+      });
+      fetchUsers(); // Refresh list
+      return true;
+    } catch (error) {
+      notification.error({
+        message: 'Error',
+        description: 'Failed to delete user'
+      });
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Load users on mount
   useEffect(() => {
     fetchUsers();
@@ -57,6 +99,8 @@ export const useUsers = () => {
     loading,
     pagination,
     fetchUsers,
-    createUser
+    createUser,
+    updateUser,
+    deleteUser,
   };
 };

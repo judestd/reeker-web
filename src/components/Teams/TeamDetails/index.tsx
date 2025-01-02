@@ -1,8 +1,8 @@
-import React from 'react';
-import { Space, Button } from 'antd';
-import type { TeamDetailsProps } from './types';
-import TeamStats from '../TeamStats';
-import TeamMembers from '../TeamMembers';
+import React from "react";
+import { Space, Button } from "antd";
+import type { TeamDetailsProps } from "./types";
+import TeamStats from "../TeamStats";
+import TeamMembers from "../TeamMembers";
 
 const TeamDetails: React.FC<TeamDetailsProps> = ({
   members,
@@ -10,7 +10,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({
   onAddMembers,
   onRemoveMember,
 }) => (
-  <Space direction="vertical" size="large" style={{ width: '100%' }}>
+  <Space direction="vertical" size="large" style={{ width: "100%" }}>
     <TeamStats members={members} />
     <TeamMembers
       members={members}

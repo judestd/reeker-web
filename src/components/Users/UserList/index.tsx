@@ -1,9 +1,9 @@
-import React from 'react';
-import { Table, Card } from 'antd';
-import { User } from '../../../types/user';
-import { useUserColumns } from './columns';
-import UserListHeader from './UserListHeader';
-import { PaginationParams } from '../../../types/common';
+import React from "react";
+import { Table, Card } from "antd";
+import { User } from "../../../types/user";
+import { useUserColumns } from "./columns";
+import UserListHeader from "./UserListHeader";
+import { PaginationParams } from "../../../types/common";
 
 interface UserListProps {
   users: User[];

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Select } from 'antd';
-import { useTranslation } from 'react-i18next';
-import type { Languages } from '../locales';
+import React from "react";
+import { Select } from "antd";
+import { useTranslation } from "react-i18next";
+import type { Languages } from "../locales";
 
 const { Option } = Select;
 
@@ -13,7 +13,7 @@ const LanguageSwitcher: React.FC = () => {
   };
 
   return (
-    <Select 
+    <Select
       value={i18n.language as Languages}
       onChange={handleChange}
       style={{ width: 120 }}

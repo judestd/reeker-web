@@ -19,7 +19,7 @@ export const removeMemberFromTeam = (team: Team, userId: string): Team => ({
 
 export const getMemberStats = (members: User[]) => ({
   total: members.length,
-  active: members.filter(m => m.status === 'active').length,
-  inactive: members.filter(m => m.status === 'inactive').length,
-  onLeave: members.filter(m => m.isTemporaryLeave).length,
+  active: members.filter(m => m.isActive).length,
+  inactive: members.filter(m => m.isActive).length,
+  onLeave: members.filter(m => m.isActive).length,
 });

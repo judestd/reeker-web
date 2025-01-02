@@ -1,8 +1,8 @@
-import React from 'react';
-import { Form, Button, Card } from 'antd';
-import { Team } from '../../../types/user';
-import TeamNameField from './TeamNameField';
-import TeamDescriptionField from './TeamDescriptionField';
+import React from "react";
+import { Form, Button, Card } from "antd";
+import { Team } from "../../../types/user";
+import TeamNameField from "./TeamNameField";
+import TeamDescriptionField from "./TeamDescriptionField";
 
 interface TeamFormProps {
   initialValues?: Partial<Team> | null;
@@ -10,10 +10,10 @@ interface TeamFormProps {
   loading?: boolean;
 }
 
-const TeamForm: React.FC<TeamFormProps> = ({ 
-  initialValues, 
-  onSubmit, 
-  loading 
+const TeamForm: React.FC<TeamFormProps> = ({
+  initialValues,
+  onSubmit,
+  loading,
 }) => {
   const [form] = Form.useForm<Partial<Team>>();
 
@@ -24,7 +24,10 @@ const TeamForm: React.FC<TeamFormProps> = ({
   }, [initialValues, form]);
 
   return (
-    <Card title={initialValues ? 'Edit Team' : 'Create New Team'} className="shadow-md">
+    <Card
+      title={initialValues ? "Edit Team" : "Create New Team"}
+      className="shadow-md"
+    >
       <Form
         form={form}
         layout="vertical"
@@ -35,13 +38,13 @@ const TeamForm: React.FC<TeamFormProps> = ({
         <TeamDescriptionField />
 
         <Form.Item className="mb-0">
-          <Button 
-            type="primary" 
-            htmlType="submit" 
+          <Button
+            type="primary"
+            htmlType="submit"
             loading={loading}
             className="w-full md:w-auto"
           >
-            {initialValues ? 'Update Team' : 'Create Team'}
+            {initialValues ? "Update Team" : "Create Team"}
           </Button>
         </Form.Item>
       </Form>

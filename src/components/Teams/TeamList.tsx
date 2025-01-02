@@ -1,8 +1,8 @@
-import React from 'react';
-import { Table, Button, Space, Tag } from 'antd';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
-import { Team } from '../../types/user';
+import React from "react";
+import { Table, Button, Space, Tag } from "antd";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { Team } from "../../types/user";
 
 interface TeamListProps {
   onEdit: (team: Team) => void;
@@ -14,24 +14,24 @@ const TeamList: React.FC<TeamListProps> = ({ onEdit, onView }) => {
 
   const columns = [
     {
-      title: 'Team Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Team Name",
+      dataIndex: "name",
+      key: "name",
     },
     {
-      title: 'Members',
-      dataIndex: 'members',
-      key: 'members',
+      title: "Members",
+      dataIndex: "members",
+      key: "members",
       render: (members: string[]) => <Tag>{members.length} members</Tag>,
     },
     {
-      title: 'Created At',
-      dataIndex: 'createdAt',
-      key: 'createdAt',
+      title: "Created At",
+      dataIndex: "createdAt",
+      key: "createdAt",
     },
     {
-      title: 'Actions',
-      key: 'actions',
+      title: "Actions",
+      key: "actions",
       render: (_: any, record: Team) => (
         <Space>
           <Button type="primary" onClick={() => onView(record)}>
@@ -44,12 +44,7 @@ const TeamList: React.FC<TeamListProps> = ({ onEdit, onView }) => {
   ];
 
   return (
-    <Table
-      columns={columns}
-      dataSource={teams}
-      loading={loading}
-      rowKey="id"
-    />
+    <Table columns={columns} dataSource={teams} loading={loading} rowKey="id" />
   );
 };
 

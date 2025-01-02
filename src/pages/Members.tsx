@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Card } from 'antd';
-import MemberList from '../components/Members/MemberList';
-import EditMemberModal from '../components/Members/EditMemberModal';
-import { User } from '../types/user';
-import LoadingSpinner from '../components/common/LoadingSpinner';
-import { useMembers } from '../hooks/useMembers';
-import PageHeader from '../components/common/PageHeader';
+import React, { useState } from "react";
+import { Card } from "antd";
+import MemberList from "../components/Members/MemberList";
+import EditMemberModal from "../components/Members/EditMemberModal";
+import { User } from "../types/user";
+import LoadingSpinner from "../components/common/LoadingSpinner";
+import { useMembers } from "../hooks/useMembers";
+import PageHeader from "../components/common/PageHeader";
 
 const Members: React.FC = () => {
   const [editingMember, setEditingMember] = useState<User | null>(null);
@@ -20,14 +20,11 @@ const Members: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <PageHeader 
-        title="Team Members"
-        subtitle="Manage your team members"
-      />
-      
+      <PageHeader title="Team Members" subtitle="Manage your team members" />
+
       <LoadingSpinner spinning={loading}>
         <Card className="shadow-md">
-          <MemberList 
+          <MemberList
             members={members}
             loading={loading}
             onEdit={setEditingMember}

@@ -1,1 +1,0 @@
-import{j as t}from"./index-DWVIrarL.js";import{C as i}from"./index-BwZGRhAa.js";const s=()=>t.jsx(i,{title:"Notifications",children:t.jsx("p",{children:"No new notifications"})});export{s as default};

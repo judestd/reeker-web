@@ -1,6 +1,6 @@
-import React from 'react';
-import { Form, Select } from 'antd';
-import { User } from '../../../types/user';
+import React from "react";
+import { Form, Select } from "antd";
+import { User } from "../../../types/user";
 
 interface MemberSelectProps {
   availableUsers: User[];
@@ -10,7 +10,7 @@ const MemberSelect: React.FC<MemberSelectProps> = ({ availableUsers }) => (
   <Form.Item
     name="userIds"
     label="Select Members"
-    rules={[{ required: true, message: 'Please select at least one member' }]}
+    rules={[{ required: true, message: "Please select at least one member" }]}
   >
     <Select
       mode="multiple"
@@ -18,9 +18,9 @@ const MemberSelect: React.FC<MemberSelectProps> = ({ availableUsers }) => (
       className="w-full"
       optionFilterProp="children"
     >
-      {availableUsers.map(user => (
+      {availableUsers.map((user) => (
         <Select.Option key={user.id} value={user.id}>
-          {user.name} ({user.role})
+          {user.fullName} ({user.role})
         </Select.Option>
       ))}
     </Select>

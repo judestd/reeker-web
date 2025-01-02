@@ -1,38 +1,53 @@
 // src/pages/Users.tsx
-import React, { useState } from 'react';
-import { Button, Table } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import { useUsers } from '../hooks/useUsers';
-import { columns } from './Users/columns';
-import UserForm from '../components/Users/UserForm';
-import type { CreateUserInput } from '../types/user';
-import { useLocation } from '../hooks/useLocation';
+import React, { useState } from "react";
+import { Button, Table, Form } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import { useUsers } from "../hooks/useUsers";
+import { columns } from "./Users/columns";
+import UserForm from "../components/Users/UserForm";
+import type { CreateUserInput, UpdateUserInput, User } from "../types/user";
+import EditUserForm from "../components/Users/EditUserForm";
 
 const Users: React.FC = () => {
-  const { users, loading, pagination, fetchUsers, createUser } = useUsers();
+  const {
+    users,
+    loading,
+    pagination,
+    fetchUsers,
+    createUser,
+    updateUser,
+    deleteUser,
+  } = useUsers();
   const [formVisible, setFormVisible] = useState(false);
-  const { provinces, districts, wards } = useLocation();
+  const [editingUser, setEditingUser] = useState<User | null>(null);
+  const [form] = Form.useForm();
 
   const handleCreate = async (values: CreateUserInput) => {
-    const province = provinces.find(p => p.code === values.province)
-    const district = districts.find(d => d.code === values.district)
-    const ward = wards.find(w => w.code === values.ward)
-
-    values.province = province?._id
-    values.district = district?._id
-    values.ward = ward?._id
-
     const success = await createUser(values);
     if (success) {
       setFormVisible(false);
+      form.resetFields();
+      return true;
     }
+    return false;
+  };
+
+  const handleUpdate = async (id: string, values: UpdateUserInput) => {
+    const success = await updateUser(id, values);
+    if (success) {
+      setEditingUser(null);
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    await deleteUser(id);
   };
 
   return (
     <div className="p-6">
       <div className="mb-4 flex justify-between">
         <h1 className="text-2xl">Users</h1>
-        <Button 
+        <Button
           type="primary"
           icon={<PlusOutlined />}
           onClick={() => setFormVisible(true)}
@@ -42,14 +57,17 @@ const Users: React.FC = () => {
       </div>
 
       <Table
-        columns={columns}
+        columns={columns({
+          onEdit: (user) => setEditingUser(user),
+          onDelete: handleDelete,
+        })}
         dataSource={users}
         loading={loading}
         pagination={{
           current: pagination?.page,
           pageSize: pagination?.limit,
           total: pagination?.totalDocs,
-          onChange: (page, pageSize) => fetchUsers(page, pageSize)
+          onChange: (page, pageSize) => fetchUsers(page, pageSize),
         }}
         rowKey="id"
       />
@@ -58,6 +76,15 @@ const Users: React.FC = () => {
         open={formVisible}
         onCancel={() => setFormVisible(false)}
         onSubmit={handleCreate}
+        loading={loading}
+        form={form}
+      />
+
+      <EditUserForm
+        open={!!editingUser}
+        user={editingUser}
+        onCancel={() => setEditingUser(null)}
+        onSubmit={handleUpdate}
         loading={loading}
       />
     </div>

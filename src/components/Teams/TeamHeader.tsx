@@ -1,6 +1,6 @@
-import React from 'react';
-import { Space, Button } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import React from "react";
+import { Space, Button } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 
 interface TeamHeaderProps {
   onCreateTeam: () => void;
@@ -8,11 +8,7 @@ interface TeamHeaderProps {
 
 const TeamHeader: React.FC<TeamHeaderProps> = ({ onCreateTeam }) => (
   <Space>
-    <Button
-      type="primary"
-      icon={<PlusOutlined />}
-      onClick={onCreateTeam}
-    >
+    <Button type="primary" icon={<PlusOutlined />} onClick={onCreateTeam}>
       Create Team
     </Button>
   </Space>

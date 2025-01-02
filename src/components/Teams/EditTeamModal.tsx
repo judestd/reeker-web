@@ -1,6 +1,6 @@
-import React from 'react';
-import { Modal, Form, Input } from 'antd';
-import { Team } from '../../types/user';
+import React from "react";
+import { Modal, Form, Input } from "antd";
+import { Team } from "../../types/user";
 
 interface EditTeamModalProps {
   visible: boolean;
@@ -15,7 +15,7 @@ const EditTeamModal: React.FC<EditTeamModalProps> = ({
   team,
   onCancel,
   onSave,
-  loading
+  loading,
 }) => {
   const [form] = Form.useForm<Partial<Team>>();
 
@@ -33,17 +33,13 @@ const EditTeamModal: React.FC<EditTeamModalProps> = ({
       onOk={form.submit}
       confirmLoading={loading}
     >
-      <Form
-        form={form}
-        layout="vertical"
-        onFinish={onSave}
-      >
+      <Form form={form} layout="vertical" onFinish={onSave}>
         <Form.Item
           name="name"
           label="Team Name"
           rules={[
-            { required: true, message: 'Please enter team name' },
-            { min: 3, message: 'Team name must be at least 3 characters' }
+            { required: true, message: "Please enter team name" },
+            { min: 3, message: "Team name must be at least 3 characters" },
           ]}
         >
           <Input />
