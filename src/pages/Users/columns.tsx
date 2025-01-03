@@ -1,30 +1,32 @@
-// src/pages/Users/columns.tsx
 import { ColumnsType } from "antd/es/table";
 import { Tag, Space, Button, Popconfirm } from "antd";
-import { Name_Role, Role, User } from "../../types/user";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Name_Role, Role, User } from "../../types/user";
+import { TFunction } from "i18next";
 
 interface ColumnProps {
   onEdit: (user: User) => void;
   onDelete: (id: string) => void;
+  t: TFunction;
 }
 
 export const columns = ({
   onEdit,
   onDelete,
+  t,
 }: ColumnProps): ColumnsType<User> => [
   {
-    title: "Full Name",
+    title: t("users:fields.fullName"),
     dataIndex: "fullName",
     key: "fullName",
   },
   {
-    title: "Email",
+    title: t("users:fields.email"),
     dataIndex: "email",
     key: "email",
   },
   {
-    title: "Role",
+    title: t("users:fields.role"),
     dataIndex: "role",
     key: "role",
     render: (role: Role) => (
@@ -32,43 +34,61 @@ export const columns = ({
     ),
   },
   {
-    title: "Status",
+    title: t("users:fields.status"),
     dataIndex: "isActive",
     key: "isActive",
     render: (isActive: boolean) => (
       <Tag color={isActive ? "success" : "error"}>
-        {isActive ? "Active" : "Inactive"}
+        {isActive ? t("users:status.active") : t("users:status.inactive")}
       </Tag>
     ),
   },
   {
-    title: "Phone",
+    title: t("users:fields.phone"),
     dataIndex: "phone",
     key: "phone",
   },
   {
-    title: "Created At",
+    title: t("users:fields.birthDay"),
+    dataIndex: "birthday",
+    key: "birthday",
+    render: (date: string) => (date ? new Date(date).toLocaleDateString() : ""),
+  },
+  {
+    title: t("users:fields.gender"),
+    dataIndex: "gender",
+    key: "gender",
+    render: (gender: string) =>
+      gender ? gender.charAt(0).toUpperCase() + gender.slice(1) : "",
+  },
+  // {
+  //   title: t("users:fields.address"),
+  //   dataIndex: "address",
+  //   key: "address",
+  // },
+  {
+    title: t("common:createdAt"),
     dataIndex: "createdAt",
     key: "createdAt",
     render: (date: string) => new Date(date).toLocaleDateString(),
   },
   {
-    title: "Actions",
+    title: t("common:actions.actions"),
     key: "actions",
     render: (_, record) => (
       <Space size="middle">
         <Button icon={<EditOutlined />} onClick={() => onEdit(record)}>
-          Edit
+          {t("common:actions.edit")}
         </Button>
         <Popconfirm
-          title="Delete user"
-          description="Are you sure you want to delete this user?"
+          title={t("users:deleteUser.title")}
+          description={t("users:deleteUser.description")}
           onConfirm={() => onDelete(record.id)}
-          okText="Yes"
-          cancelText="No"
+          okText={t("common:actions.yes")}
+          cancelText={t("common:actions.no")}
         >
           <Button danger icon={<DeleteOutlined />}>
-            Delete
+            {t("common:actions.delete")}
           </Button>
         </Popconfirm>
       </Space>

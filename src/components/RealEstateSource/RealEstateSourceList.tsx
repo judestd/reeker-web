@@ -31,7 +31,10 @@ const RealEstateSourceList: React.FC<RealEstateSourceListProps> = ({
     const province = provinces.find((p) => p.code === area.province_code);
     const district = districts.find((d) => d.code === area.district_code);
     const ward = wards.find((w) => w.code === area.ward_code);
-    return `${ward?.fullName}- ${district?.fullName} - ${province?.fullName} `;
+
+    return [ward?.fullName, district?.fullName, province?.fullName]
+      .filter((value) => value)
+      .join(" - ");
   };
 
   const columns = [
@@ -39,7 +42,7 @@ const RealEstateSourceList: React.FC<RealEstateSourceListProps> = ({
       title: t("realEstateSource:name"),
       dataIndex: "name",
       key: "name",
-      sorter: true,
+      //   sorter: true,
     },
     {
       title: t("realEstateSource:areas"),
@@ -58,7 +61,7 @@ const RealEstateSourceList: React.FC<RealEstateSourceListProps> = ({
       dataIndex: "createdAt",
       key: "createdAt",
       render: (date: string) => dayjs(date).format("YYYY-MM-DD HH:mm"),
-      sorter: true,
+      //   sorter: true,
     },
     {
       title: t("common:actions.actions"),

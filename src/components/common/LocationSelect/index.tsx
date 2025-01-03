@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Select } from "antd";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
+import { useTranslation } from "react-i18next";
 
 interface LocationSelectProps {
   required?: boolean;
@@ -10,6 +11,8 @@ interface LocationSelectProps {
 }
 
 const LocationSelect: React.FC<LocationSelectProps> = ({ required, form }) => {
+  const { t } = useTranslation();
+
   const { provinces, districts, wards } = useSelector(
     (state: RootState) => state.location,
   );
@@ -60,11 +63,11 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ required, form }) => {
     <>
       <Form.Item
         name="province"
-        label="Province"
-        rules={[{ required: required }]}
+        label={t("common:selectProvince")}
+        rules={[{ required: required, message: t("common:selectProvince") }]}
       >
         <Select
-          placeholder="Select province"
+          placeholder={t("common:selectProvince")}
           onChange={handleProvinceChange}
           options={provinces.map((p) => ({
             label: p.name,
@@ -75,11 +78,11 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ required, form }) => {
 
       <Form.Item
         name="district"
-        label="District"
-        rules={[{ required: required }]}
+        label={t("common:selectDistrict")}
+        rules={[{ required: required, message: t("common:selectDistrict") }]}
       >
         <Select
-          placeholder="Select district"
+          placeholder={t("common:selectDistrict")}
           onChange={handleDistrictChange}
           disabled={!selectedProvince}
           options={filteredDistricts.map((d) => ({
@@ -89,9 +92,13 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ required, form }) => {
         />
       </Form.Item>
 
-      <Form.Item name="ward" label="Ward" rules={[{ required: required }]}>
+      <Form.Item
+        name="ward"
+        label={t("common:selectWard")}
+        rules={[{ required: required, message: t("common:selectWard") }]}
+      >
         <Select
-          placeholder="Select ward"
+          placeholder={t("common:selectWard")}
           disabled={!selectedDistrict}
           options={filteredWards.map((w) => ({
             label: w.name,

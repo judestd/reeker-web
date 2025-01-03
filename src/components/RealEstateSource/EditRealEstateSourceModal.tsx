@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Modal, Form, Input, Button } from "antd";
+import { Modal, Form, Input, Button, message } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import type { RealEstateSource } from "../../types/realEstateSource";
@@ -30,6 +30,13 @@ const EditRealEstateSourceModal: React.FC<EditRealEstateSourceModalProps> = ({
   }, [visible, source, form]);
 
   const handleSubmit = (values: any) => {
+    if (
+      !values?.area?.length ||
+      values?.area?.filter((area: any) => !area?.province_code).length > 0
+    ) {
+      message.error(t("realEstateSource:areaRequired"));
+      return;
+    }
     onSave(values);
   };
 

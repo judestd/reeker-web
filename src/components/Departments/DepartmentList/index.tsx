@@ -67,8 +67,8 @@ const DepartmentList: React.FC<DepartmentListProps> = ({
       rowKey="_id"
       pagination={{
         defaultPageSize: 10,
-        showSizeChanger: true,
-        showTotal: (total) => t("departments:total", { total }),
+        // showSizeChanger: true,
+        // showTotal: (total) => t("departments:total", { total }),
       }}
     />
   );
