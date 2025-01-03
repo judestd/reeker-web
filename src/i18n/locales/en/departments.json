@@ -1,0 +1,14 @@
+{
+  "title": "Departments",
+  "addDepartment": "Add Department",
+  "editDepartment": "Edit Department",
+  "name": "Name",
+  "foundationDate": "Foundation Date",
+  "nameRequired": "Please enter department name",
+  "dateRequired": "Please select foundation date",
+  "deleteConfirm": "Are you sure you want to delete this department?",
+  "deleteSuccess": "Department deleted successfully",
+  "updateSuccess": "Department updated successfully",
+  "createSuccess": "Department created successfully",
+  "total": "Total {total} departments"
+} 

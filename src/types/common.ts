@@ -32,3 +32,16 @@ export interface ApiResponse<T> {
     pagination: PaginationMetadata;
   };
 }
+
+export interface ApiDataResponse<T> {
+  code: string;
+  success: boolean;
+  data: {
+    data: T;
+    pagination: PaginationMetadata;
+  };
+  error: null | string;
+  metadata: {
+    timestamp: string;
+  };
+}

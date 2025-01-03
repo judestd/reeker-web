@@ -7,8 +7,12 @@ import { columns } from "./Users/columns";
 import UserForm from "../components/Users/UserForm";
 import type { CreateUserInput, UpdateUserInput, User } from "../types/user";
 import EditUserForm from "../components/Users/EditUserForm";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const Users: React.FC = () => {
+  const { user } = useSelector((state: RootState) => state.auth);
+
   const {
     users,
     loading,
@@ -23,6 +27,11 @@ const Users: React.FC = () => {
   const [form] = Form.useForm();
 
   const handleCreate = async (values: CreateUserInput) => {
+    if (values.departmentId) {
+      values.joinedDepartmentAt = new Date().toISOString();
+      values.joinedDepartmentBy = user?.id;
+    }
+
     const success = await createUser(values);
     if (success) {
       setFormVisible(false);
@@ -33,6 +42,11 @@ const Users: React.FC = () => {
   };
 
   const handleUpdate = async (id: string, values: UpdateUserInput) => {
+    if (values.departmentId) {
+      values.joinedDepartmentAt = new Date().toISOString();
+      values.joinedDepartmentBy = user?.id;
+    }
+
     const success = await updateUser(id, values);
     if (success) {
       setEditingUser(null);

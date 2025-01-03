@@ -1,8 +1,6 @@
 import React from "react";
 import { Select } from "antd";
-import {
-  LANGUAGE_LABELS,
-} from "../../constants/languages";
+import { LANGUAGE_LABELS } from "../../constants/languages";
 import { useLanguage } from "../../hooks/useLanguage";
 import { LanguageSwitcherProps } from "./types";
 

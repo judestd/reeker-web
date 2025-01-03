@@ -12,7 +12,7 @@ export interface Province {
   administrativeRegionId: number;
 }
 
-export interface District extends Omit<Province, 'administrativeRegionId'> {
+export interface District extends Omit<Province, "administrativeRegionId"> {
   provinceCode: string;
 }
 

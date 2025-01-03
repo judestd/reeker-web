@@ -1,0 +1,14 @@
+{
+  "title": "Real Estate Sources",
+  "create": "Create Source",
+  "edit": "Edit Source",
+  "name": "Name",
+  "area": "Area",
+  "areas": "Areas",
+  "addArea": "Add Area",
+  "nameRequired": "Please enter source name",
+  "deleteConfirm": "Are you sure you want to delete this source?",
+  "deleteSuccess": "Source deleted successfully",
+  "updateSuccess": "Source updated successfully",
+  "createSuccess": "Source created successfully"
+} 

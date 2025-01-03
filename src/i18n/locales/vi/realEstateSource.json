@@ -1,0 +1,14 @@
+{
+  "title": "Nguồn Bất Động Sản",
+  "create": "Tạo Nguồn",
+  "edit": "Sửa Nguồn",
+  "name": "Tên",
+  "area": "Khu Vực",
+  "areas": "Khu Vực",
+  "addArea": "Thêm Khu Vực",
+  "nameRequired": "Vui lòng nhập tên nguồn",
+  "deleteConfirm": "Bạn có chắc chắn muốn xóa nguồn này?",
+  "deleteSuccess": "Xóa nguồn thành công",
+  "updateSuccess": "Cập nhật nguồn thành công",
+  "createSuccess": "Tạo nguồn thành công"
+} 

@@ -14,7 +14,7 @@
 //         // Apply search
 //         if (params.search) {
 //           const searchLower = params.search.toLowerCase();
-//           filteredUsers = filteredUsers.filter(user => 
+//           filteredUsers = filteredUsers.filter(user =>
 //             user.fullName.toLowerCase().includes(searchLower) ||
 //             user.email.toLowerCase().includes(searchLower)
 //           );

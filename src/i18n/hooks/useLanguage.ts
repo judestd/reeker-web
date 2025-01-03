@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
-import { SUPPORTED_LANGUAGES } from '../constants/languages';
+import { useTranslation } from "react-i18next";
+import { SUPPORTED_LANGUAGES } from "../constants/languages";
 
 export const useLanguage = () => {
   const { i18n } = useTranslation();
@@ -11,6 +11,6 @@ export const useLanguage = () => {
   return {
     currentLanguage: i18n.language,
     changeLanguage,
-    isReady: i18n.isInitialized
+    isReady: i18n.isInitialized,
   };
 };

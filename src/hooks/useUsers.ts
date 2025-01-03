@@ -1,9 +1,9 @@
 // src/hooks/useUsers.ts
-import { useState, useEffect } from 'react';
-import { notification } from 'antd';
-import { userApi } from '../api/endpoints/user';
-import type { User, CreateUserInput, UpdateUserInput } from '../types/user';
-import { PaginationMetadata } from '../types/common';
+import { useState, useEffect } from "react";
+import { notification } from "antd";
+import { userApi } from "../api/endpoints/user";
+import type { User, CreateUserInput, UpdateUserInput } from "../types/user";
+import { PaginationMetadata } from "../types/common";
 
 export const useUsers = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -18,8 +18,8 @@ export const useUsers = () => {
       setPagination(response.data.metadata.pagination);
     } catch (error) {
       notification.error({
-        message: 'Error',
-        description: 'Failed to fetch users'
+        message: "Error",
+        description: "Failed to fetch users",
       });
     } finally {
       setLoading(false);
@@ -31,15 +31,15 @@ export const useUsers = () => {
     try {
       await userApi.createUser(data);
       notification.success({
-        message: 'Success',
-        description: 'User created successfully'
+        message: "Success",
+        description: "User created successfully",
       });
       fetchUsers(); // Refresh list
       return true;
     } catch (error) {
       notification.error({
-        message: 'Error',
-        description: 'Failed to create user'
+        message: "Error",
+        description: "Failed to create user",
       });
       return false;
     } finally {
@@ -52,15 +52,15 @@ export const useUsers = () => {
     try {
       await userApi.updateUser(id, data);
       notification.success({
-        message: 'Success',
-        description: 'User updated successfully'
+        message: "Success",
+        description: "User updated successfully",
       });
       fetchUsers(); // Refresh list
       return true;
     } catch (error) {
       notification.error({
-        message: 'Error',
-        description: 'Failed to update user'
+        message: "Error",
+        description: "Failed to update user",
       });
       return false;
     } finally {
@@ -73,15 +73,15 @@ export const useUsers = () => {
     try {
       await userApi.deleteUser(id);
       notification.success({
-        message: 'Success',
-        description: 'User deleted successfully'
+        message: "Success",
+        description: "User deleted successfully",
       });
       fetchUsers(); // Refresh list
       return true;
     } catch (error) {
       notification.error({
-        message: 'Error',
-        description: 'Failed to delete user'
+        message: "Error",
+        description: "Failed to delete user",
       });
       return false;
     } finally {

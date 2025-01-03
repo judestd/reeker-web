@@ -4,12 +4,21 @@
     "teams": "Teams",
     "members": "Members",
     "users": "Users",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "realEstateSource": "Real Estate Source",
+    "departments": "Departments"
   },
   "actions": {
     "edit": "Edit",
     "delete": "Delete",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "add": "Add",
+    "actions": "Actions",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "pagination": {
+    "total": "Total {total}"
   }
 }

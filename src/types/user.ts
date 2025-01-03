@@ -1,23 +1,23 @@
 // src/types/user.ts
 export enum Role {
-  SUPER_ADMIN = 'super_admin',
-  ADMIN = 'admin',
-  OWNER = 'owner', // Đầu chủ
-  OWNER_MANAGER = 'owner_manager', // Quản lý đầu chủ
-  CUSTOMER = 'customer', // Đầu khách
-  CUSTOMER_MANAGER = 'customer_manager', // Quản lý đầu khách
-  DEPARTMENT_MANAGER = 'department_manager', // Trưởng phòng
+  SUPER_ADMIN = "super_admin",
+  ADMIN = "admin",
+  OWNER = "owner", // Đầu chủ
+  OWNER_MANAGER = "owner_manager", // Quản lý đầu chủ
+  CUSTOMER = "customer", // Đầu khách
+  CUSTOMER_MANAGER = "customer_manager", // Quản lý đầu khách
+  DEPARTMENT_MANAGER = "department_manager", // Trưởng phòng
 }
 
 export const Name_Role = {
-  [Role.SUPER_ADMIN]: 'Super Admin',
-  [Role.ADMIN]: 'Admin',
-  [Role.OWNER]: 'Đầu chủ',
-  [Role.OWNER_MANAGER]: 'Quản lý đầu chủ',
-  [Role.CUSTOMER]: 'Đầu khách',
-  [Role.CUSTOMER_MANAGER]: 'Quản lý đầu khách',
-  [Role.DEPARTMENT_MANAGER]: 'Trưởng phòng',
-}
+  [Role.SUPER_ADMIN]: "Super Admin",
+  [Role.ADMIN]: "Admin",
+  [Role.OWNER]: "Đầu chủ",
+  [Role.OWNER_MANAGER]: "Quản lý đầu chủ",
+  [Role.CUSTOMER]: "Đầu khách",
+  [Role.CUSTOMER_MANAGER]: "Quản lý đầu khách",
+  [Role.DEPARTMENT_MANAGER]: "Trưởng phòng",
+};
 
 export interface User {
   id: string;
@@ -37,7 +37,9 @@ export interface User {
   addressDetail?: string;
   gender?: string;
   birthday?: string;
+  departmentId?: string;
   joinedDepartmentAt?: string;
+  joinedDepartmentBy?: string;
   isActive: boolean;
   deactivatedAt?: string;
   deviceId?: string;
@@ -65,6 +67,7 @@ export interface CreateUserInput {
   birthday?: string;
   joinedDepartmentAt?: string;
   joinedDepartmentBy?: string;
+  departmentId: string;
 }
 
 export interface UpdateUserInput {
@@ -85,6 +88,7 @@ export interface UpdateUserInput {
   birthday?: string;
   joinedDepartmentAt?: string;
   joinedDepartmentBy?: string;
+  departmentId?: string;
 }
 
 export interface Team {
