@@ -27,11 +27,11 @@ const RealEstateSources: React.FC = () => {
     try {
       setLoading(true);
       const response = await realEstateSourceApi.getAll({ page, limit });
-      setSources(response.data.data?.data || []);
+      setSources(response.data.data || []);
       setPagination({
-        current: response.data.data.pagination.page,
-        pageSize: response.data.data.pagination.limit,
-        total: response.data.data.pagination.totalDocs || 0,
+        current: response.data.metadata.pagination.page,
+        pageSize: response.data.metadata.pagination.limit,
+        total: response.data.metadata.pagination.totalDocs || 0,
       });
     } catch (error) {
       message.error(t("common:errors.fetchFailed"));
