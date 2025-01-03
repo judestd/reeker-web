@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { User } from '../../types/user';
-import { mockUsers } from '../../data/mockData';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { User } from "../../types/user";
+import { mockUsers } from "../../data/mockData";
 
 interface MemberState {
   members: User[];
@@ -15,15 +15,18 @@ const initialState: MemberState = {
 };
 
 const memberSlice = createSlice({
-  name: 'members',
+  name: "members",
   initialState,
   reducers: {
     setMembers: (state, action: PayloadAction<User[]>) => {
       state.members = action.payload;
     },
-    updateMember: (state, action: PayloadAction<{ id: string; updates: Partial<User> }>) => {
+    updateMember: (
+      state,
+      action: PayloadAction<{ id: string; updates: Partial<User> }>,
+    ) => {
       const { id, updates } = action.payload;
-      const index = state.members.findIndex(member => member.id === id);
+      const index = state.members.findIndex((member) => member.id === id);
       if (index !== -1) {
         state.members[index] = { ...state.members[index], ...updates };
       }
@@ -37,5 +40,6 @@ const memberSlice = createSlice({
   },
 });
 
-export const { setMembers, updateMember, setLoading, setError } = memberSlice.actions;
+export const { setMembers, updateMember, setLoading, setError } =
+  memberSlice.actions;
 export default memberSlice.reducer;

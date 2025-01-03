@@ -1,0 +1,14 @@
+{
+  "title": "Phòng Ban",
+  "addDepartment": "Thêm Phòng Ban",
+  "editDepartment": "Sửa Phòng Ban",
+  "name": "Tên",
+  "foundationDate": "Ngày Thành Lập",
+  "nameRequired": "Vui lòng nhập tên phòng ban",
+  "dateRequired": "Vui lòng chọn ngày thành lập",
+  "deleteConfirm": "Bạn có chắc chắn muốn xóa phòng ban này?",
+  "deleteSuccess": "Xóa phòng ban thành công",
+  "updateSuccess": "Cập nhật phòng ban thành công",
+  "createSuccess": "Tạo phòng ban thành công",
+  "total": "Tổng số {total} phòng ban"
+}

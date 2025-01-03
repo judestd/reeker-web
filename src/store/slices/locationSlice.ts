@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { Province, District, Ward } from '../../types/location';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { Province, District, Ward } from "../../types/location";
 
 interface LocationState {
   provinces: Province[];
@@ -14,11 +14,11 @@ const initialState: LocationState = {
   districts: [],
   wards: [],
   loading: false,
-  error: null
+  error: null,
 };
 
 const locationSlice = createSlice({
-  name: 'location',
+  name: "location",
   initialState,
   reducers: {
     setProvinces: (state, action: PayloadAction<Province[]>) => {
@@ -30,7 +30,14 @@ const locationSlice = createSlice({
     setWards: (state, action: PayloadAction<Ward[]>) => {
       state.wards = action.payload;
     },
-    setLocationData: (state, action: PayloadAction<{ provinces: Province[]; districts: District[]; wards: Ward[] }>) => {
+    setLocationData: (
+      state,
+      action: PayloadAction<{
+        provinces: Province[];
+        districts: District[];
+        wards: Ward[];
+      }>,
+    ) => {
       state.provinces = action.payload.provinces;
       state.districts = action.payload.districts;
       state.wards = action.payload.wards;
@@ -41,17 +48,17 @@ const locationSlice = createSlice({
     },
     clearWards: (state) => {
       state.wards = [];
-    }
-  }
+    },
+  },
 });
 
-export const { 
-  setProvinces, 
-  setDistricts, 
+export const {
+  setProvinces,
+  setDistricts,
   setWards,
   setLocationData,
   clearDistricts,
-  clearWards
+  clearWards,
 } = locationSlice.actions;
 
 export default locationSlice.reducer;

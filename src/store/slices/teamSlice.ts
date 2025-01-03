@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Team } from '../../types/user';
-import { mockTeams } from '../../data/mockData';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Team } from "../../types/user";
+import { mockTeams } from "../../data/mockData";
 
 interface TeamState {
   teams: Team[];
@@ -15,7 +15,7 @@ const initialState: TeamState = {
 };
 
 const teamSlice = createSlice({
-  name: 'teams',
+  name: "teams",
   initialState,
   reducers: {
     setTeams: (state, action: PayloadAction<Team[]>) => {
@@ -25,7 +25,9 @@ const teamSlice = createSlice({
       state.teams.push(action.payload);
     },
     updateTeam: (state, action: PayloadAction<Team>) => {
-      const index = state.teams.findIndex(team => team.id === action.payload.id);
+      const index = state.teams.findIndex(
+        (team) => team.id === action.payload.id,
+      );
       if (index !== -1) {
         state.teams[index] = action.payload;
       }
@@ -39,5 +41,6 @@ const teamSlice = createSlice({
   },
 });
 
-export const { setTeams, addTeam, updateTeam, setLoading, setError } = teamSlice.actions;
+export const { setTeams, addTeam, updateTeam, setLoading, setError } =
+  teamSlice.actions;
 export default teamSlice.reducer;

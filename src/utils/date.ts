@@ -1,10 +1,10 @@
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 export const formatDate = (date?: string) => {
-  if (!date) return '-';
-  return dayjs(date).format('YYYY-MM-DD');
+  if (!date) return "-";
+  return dayjs(date).format("YYYY-MM-DD");
 };
 
 export const formatDateForApi = (date: dayjs.Dayjs) => {
-  return date.format('YYYY-MM-DD');
+  return date.format("YYYY-MM-DD");
 };

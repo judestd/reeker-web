@@ -1,7 +1,7 @@
 // src/pages/Users/columns.tsx
 import { ColumnsType } from "antd/es/table";
 import { Tag, Space, Button, Popconfirm } from "antd";
-import { User } from "../../types/user";
+import { Name_Role, Role, User } from "../../types/user";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 interface ColumnProps {
@@ -27,8 +27,8 @@ export const columns = ({
     title: "Role",
     dataIndex: "role",
     key: "role",
-    render: (role: string) => (
-      <Tag color={role === "admin" ? "blue" : "green"}>{role}</Tag>
+    render: (role: Role) => (
+      <Tag color={role === "admin" ? "blue" : "green"}>{Name_Role[role]}</Tag>
     ),
   },
   {

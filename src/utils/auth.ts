@@ -1,5 +1,5 @@
 // src/utils/auth.ts
-const TOKEN_KEY = 'auth_token';
+const TOKEN_KEY = "auth_token";
 
 export const setStoredToken = (token: string): void => {
   localStorage.setItem(TOKEN_KEY, token);

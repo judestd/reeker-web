@@ -1,13 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import authReducer from './slices/authSlice';
-import teamReducer from './slices/teamSlice';
-import memberReducer from './slices/memberSlice';
-import locationReducer from './slices/locationSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import authReducer from "./slices/authSlice";
+import teamReducer from "./slices/teamSlice";
+import memberReducer from "./slices/memberSlice";
+import locationReducer from "./slices/locationSlice";
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
   // whitelist: ['auth'],
 };
@@ -15,18 +15,21 @@ const persistConfig = {
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 
 const locationPersistConfig = {
-  key: 'location',
+  key: "location",
   storage,
 };
 
-const persistedLocationReducer = persistReducer(locationPersistConfig, locationReducer);
+const persistedLocationReducer = persistReducer(
+  locationPersistConfig,
+  locationReducer,
+);
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     teams: teamReducer,
     members: memberReducer,
-    location: persistedLocationReducer
+    location: persistedLocationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
