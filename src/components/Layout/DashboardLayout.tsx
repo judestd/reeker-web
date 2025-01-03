@@ -8,10 +8,10 @@ import { RootState } from "../../store";
 import { logout } from "../../store/slices/authSlice";
 import {
   DashboardOutlined,
-  TeamOutlined,
   UserOutlined,
   BellOutlined,
   LogoutOutlined,
+  BankOutlined,
 } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
@@ -40,17 +40,29 @@ const DashboardLayout: React.FC = () => {
               label: t("common:nav.dashboard"),
               onClick: () => navigate("/dashboard"),
             },
+            // {
+            //   key: "/teams",
+            //   icon: <TeamOutlined />,
+            //   label: t("common:nav.teams"),
+            //   onClick: () => navigate("/teams"),
+            // },
+            // {
+            //   key: "/members",
+            //   icon: <UserOutlined />,
+            //   label: t("common:nav.members"),
+            //   onClick: () => navigate("/members"),
+            // },
             {
-              key: "/teams",
-              icon: <TeamOutlined />,
-              label: t("common:nav.teams"),
-              onClick: () => navigate("/teams"),
+              key: "/realEstateSource",
+              icon: <BankOutlined />,
+              label: t("common:nav.realEstateSource"),
+              onClick: () => navigate("/realEstateSource"),
             },
             {
-              key: "/members",
-              icon: <UserOutlined />,
-              label: t("common:nav.members"),
-              onClick: () => navigate("/members"),
+              key: "/departments",
+              icon: <BankOutlined />,
+              label: t("common:nav.departments"),
+              onClick: () => navigate("/departments"),
             },
             {
               key: "/users",

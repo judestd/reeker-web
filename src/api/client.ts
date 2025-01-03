@@ -1,7 +1,7 @@
 // src/api/client.ts
-import axios from 'axios';
-import { getStoredToken, removeStoredToken } from '../utils/auth';
-import { API_CONFIG } from './config';
+import axios from "axios";
+import { getStoredToken, removeStoredToken } from "../utils/auth";
+import { API_CONFIG } from "./config";
 
 const apiClient = axios.create(API_CONFIG);
 
@@ -13,7 +13,7 @@ apiClient.interceptors.request.use(
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 apiClient.interceptors.response.use(
@@ -21,10 +21,10 @@ apiClient.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       removeStoredToken();
-      window.location.href = '/login';
+      window.location.href = "/login";
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default apiClient;

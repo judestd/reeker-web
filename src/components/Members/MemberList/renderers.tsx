@@ -8,10 +8,7 @@ export const renderRole = (role: Role) => (
 );
 
 export const renderStatus = (status: boolean) => (
-  <Tag
-    color={status ? "green" : "orange"}
-    className="rounded-full"
-  >
+  <Tag color={status ? "green" : "orange"} className="rounded-full">
     {status ? "Active" : "Inactive"}
   </Tag>
 );

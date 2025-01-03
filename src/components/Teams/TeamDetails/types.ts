@@ -1,4 +1,4 @@
-import type { Team, User } from '../../../types/user';
+import type { Team, User } from "../../../types/user";
 
 export interface TeamDetailsProps {
   team?: Team;

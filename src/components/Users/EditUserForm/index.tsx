@@ -24,7 +24,6 @@ const EditUserForm: React.FC<EditUserFormProps> = ({
 
   React.useEffect(() => {
     if (user) {
-      console.log(user, "user");
       form.setFieldsValue({
         ...user,
         birthday: user.birthday ? dayjs(user.birthday) : undefined,
@@ -32,6 +31,8 @@ const EditUserForm: React.FC<EditUserFormProps> = ({
         district: user.district,
         ward: user.ward,
       });
+    } else {
+      form.resetFields();
     }
   }, [user, form]);
 

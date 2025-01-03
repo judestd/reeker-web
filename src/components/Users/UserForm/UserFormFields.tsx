@@ -3,6 +3,7 @@ import React from "react";
 import { Form, Input, Select, DatePicker } from "antd";
 import LocationSelect from "../../common/LocationSelect";
 import { Role, Name_Role } from "../../../types/user";
+import { mockDepartments } from "../../../services/mockDepartmentService";
 
 interface UserFormFieldsProps {
   form: any;
@@ -11,6 +12,25 @@ interface UserFormFieldsProps {
 
 const UserFormFields: React.FC<UserFormFieldsProps> = ({ form, isEditing }) => (
   <>
+    <Form.Item
+      name={"departmentId"}
+      label={"Department"}
+      rules={[
+        {
+          required: false,
+          // message: t('users:departmentRequired'),
+        },
+      ]}
+    >
+      <Select placeholder={"Please select department"}>
+        {mockDepartments.map((dept) => (
+          <Select.Option key={dept._id} value={dept._id}>
+            {dept.name}
+          </Select.Option>
+        ))}
+      </Select>
+    </Form.Item>
+
     <Form.Item name="fullName" label="Full Name" rules={[{ required: true }]}>
       <Input />
     </Form.Item>
@@ -55,6 +75,15 @@ const UserFormFields: React.FC<UserFormFieldsProps> = ({ form, isEditing }) => (
       </Select>
     </Form.Item>
 
+    {isEditing && (
+      <Form.Item name="isActive" label="Status">
+        <Select placeholder="Select status">
+          <Select.Option value={true}>Kích hoạt</Select.Option>
+          <Select.Option value={false}>Hủy kích hoạt</Select.Option>
+        </Select>
+      </Form.Item>
+    )}
+
     <Form.Item name="gender" label="Gender">
       <Select>
         <Select.Option value="male">Male</Select.Option>
@@ -78,6 +107,7 @@ const UserFormFields: React.FC<UserFormFieldsProps> = ({ form, isEditing }) => (
     <Form.Item name="addressDetail" label="Address">
       <Input />
     </Form.Item>
+
     <LocationSelect required form={form} />
   </>
 );

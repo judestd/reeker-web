@@ -24,7 +24,9 @@ const EditMemberModal: React.FC<EditMemberModalProps> = ({
     if (visible && member) {
       form.setFieldsValue({
         ...member,
-        joinDate: member.joinedDepartmentAt ? dayjs(member.joinedDepartmentAt) : undefined,
+        joinDate: member.joinedDepartmentAt
+          ? dayjs(member.joinedDepartmentAt)
+          : undefined,
       });
     }
   }, [visible, member, form]);
@@ -32,7 +34,7 @@ const EditMemberModal: React.FC<EditMemberModalProps> = ({
   const handleSubmit = (values: any) => {
     onSave({
       ...values,
-      joinDate: values.joinedDepartmentAt?.format("YYYY-MM-DD"),
+      joinDate: values.joinDate?.format("YYYY-MM-DD"),
     });
   };
 

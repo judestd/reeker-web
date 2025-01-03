@@ -1,6 +1,6 @@
-import { AxiosResponse } from 'axios';
-import apiClient from '../client';
-import { API_VERSION } from '../config';
+import { AxiosResponse } from "axios";
+import apiClient from "../client";
+import { API_VERSION } from "../config";
 
 interface LoginCredentials {
   email: string;
@@ -14,10 +14,12 @@ interface AuthResponse {
     refresh_token: string;
     expires_in: number;
     token_type: string;
-  }
+  };
 }
 
 export const authApi = {
-  login: (credentials: LoginCredentials): Promise<AxiosResponse<AuthResponse>> => 
+  login: (
+    credentials: LoginCredentials,
+  ): Promise<AxiosResponse<AuthResponse>> =>
     apiClient.post(`${API_VERSION}/web/auth/login`, credentials),
 };

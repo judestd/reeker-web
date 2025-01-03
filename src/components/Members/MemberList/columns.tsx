@@ -41,7 +41,10 @@ export const getMemberColumns = (
     key: "joinDate",
     sorter: (a: User, b: User) => {
       if (!a.joinedDepartmentAt || !b.joinedDepartmentAt) return 0;
-      return new Date(a.joinedDepartmentAt).getTime() - new Date(b.joinedDepartmentAt).getTime();
+      return (
+        new Date(a.joinedDepartmentAt).getTime() -
+        new Date(b.joinedDepartmentAt).getTime()
+      );
     },
     className: "text-gray-600",
   },
