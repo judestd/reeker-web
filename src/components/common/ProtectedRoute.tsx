@@ -10,12 +10,15 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { isAuthenticated, user } = useSelector(
-    (state: RootState) => state.auth,
+    (state: RootState) => state.auth
   );
   const location = useLocation();
-
   if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  if (isAuthenticated && location.pathname === "/") {
+    return <Navigate to="/dashboard" replace />;
   }
 
   if (!user) {

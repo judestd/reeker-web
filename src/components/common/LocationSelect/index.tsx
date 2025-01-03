@@ -1,5 +1,5 @@
 // src/components/common/LocationSelect/index.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Select } from "antd";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
@@ -13,14 +13,25 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ required, form }) => {
   const { provinces, districts, wards } = useSelector(
     (state: RootState) => state.location,
   );
-  console.log(provinces, districts, wards, "provinces, districts, wards ");
 
-  const [selectedProvince, setSelectedProvince] = useState<string | undefined>(
-    form.getFieldValue("province"),
-  );
-  const [selectedDistrict, setSelectedDistrict] = useState<string | undefined>(
-    form.getFieldValue("district"),
-  );
+  const [selectedProvince, setSelectedProvince] = useState<
+    string | undefined
+  >();
+  const [selectedDistrict, setSelectedDistrict] = useState<
+    string | undefined
+  >();
+
+  useEffect(() => {
+    const province = form.getFieldValue("province");
+    const district = form.getFieldValue("district");
+
+    if (province) {
+      setSelectedProvince(province);
+    }
+    if (district) {
+      setSelectedDistrict(district);
+    }
+  }, [form.getFieldValue("province"), form.getFieldValue("district")]);
 
   const handleProvinceChange = (provinceCode: string) => {
     setSelectedProvince(provinceCode);
@@ -70,7 +81,7 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ required, form }) => {
         <Select
           placeholder="Select district"
           onChange={handleDistrictChange}
-          disabled={!filteredDistricts.length}
+          disabled={!selectedProvince}
           options={filteredDistricts.map((d) => ({
             label: d.name,
             value: d.code,
@@ -81,7 +92,7 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ required, form }) => {
       <Form.Item name="ward" label="Ward" rules={[{ required: required }]}>
         <Select
           placeholder="Select ward"
-          disabled={!filteredWards.length}
+          disabled={!selectedDistrict}
           options={filteredWards.map((w) => ({
             label: w.name,
             value: w.code,

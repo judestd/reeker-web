@@ -8,11 +8,12 @@ import {
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ConfigProvider } from "antd";
-import { store, persistor } from "./store";
+import { store, persistor, RootState } from "./store";
 import DashboardLayout from "./components/Layout/DashboardLayout";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 import LoadingSpinner from "./components/common/LoadingSpinner";
 import { initI18n } from "./i18n/config/i18nConfig";
+import { useSelector } from "react-redux";
 
 // Lazy loaded components
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
@@ -22,6 +23,17 @@ const Users = React.lazy(() => import("./pages/Users"));
 const Notifications = React.lazy(() => import("./pages/Notifications"));
 const Login = React.lazy(() => import("./pages/Login"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
+const Departments = React.lazy(() => import("./pages/Department"));
+const RealEstateSource = React.lazy(() => import("./pages/RealEstateSource"));
+
+// PublicRoute component
+function PublicRoute({ children }: { children: React.ReactNode }) {
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated,
+  );
+
+  return isAuthenticated ? <Navigate to="/dashboard" replace /> : children;
+}
 
 function App() {
   useEffect(() => {
@@ -35,11 +47,6 @@ function App() {
           <Router>
             <Suspense fallback={<LoadingSpinner />}>
               <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route
-                  path="/"
-                  element={<Navigate to="/dashboard" replace />}
-                />
                 <Route
                   path="/"
                   element={
@@ -53,7 +60,24 @@ function App() {
                   <Route path="members" element={<Members />} />
                   <Route path="users" element={<Users />} />
                   <Route path="notifications" element={<Notifications />} />
+                  <Route path="departments" element={<Departments />} />
+                  <Route
+                    path="realEstateSource"
+                    element={<RealEstateSource />}
+                  />
                 </Route>
+                <Route
+                  path="/login"
+                  element={
+                    <PublicRoute>
+                      <Login />
+                    </PublicRoute>
+                  }
+                />
+                <Route
+                  path="/"
+                  element={<Navigate to="/dashboard" replace />}
+                />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

@@ -1,12 +1,11 @@
 // src/api/endpoints/user.ts
-import apiClient from '../client';
-import type { User, CreateUserInput, UpdateUserInput } from '../../types/user';
-import { ApiResponse } from '../../types/common';
-import { API_VERSION } from '../config';
+import apiClient from "../client";
+import type { User, CreateUserInput, UpdateUserInput } from "../../types/user";
+import { ApiResponse } from "../../types/common";
+import { API_VERSION } from "../config";
 
 export const userApi = {
-  getMe: () =>
-    apiClient.get<ApiResponse<User>>(`${API_VERSION}/web/users/me`),
+  getMe: () => apiClient.get<ApiResponse<User>>(`${API_VERSION}/web/users/me`),
 
   getUsers: (params: { page: number; limit: number }) =>
     apiClient.get<ApiResponse<User[]>>(`${API_VERSION}/web/users`, { params }),

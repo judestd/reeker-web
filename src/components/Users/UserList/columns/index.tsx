@@ -17,9 +17,7 @@ export const useUserColumns = ({
     title: "Avatar",
     key: "avatar",
     width: 80,
-    render: (_, user) => (
-      <Avatar src={user.avatar} icon={<UserOutlined />} />
-    ),
+    render: (_, user) => <Avatar src={user.avatar} icon={<UserOutlined />} />,
   },
   {
     title: "Full Name",

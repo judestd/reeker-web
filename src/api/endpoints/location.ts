@@ -1,22 +1,23 @@
 // src/api/endpoints/location.ts
-import apiClient from '../client';
-import type { ApiResponse } from '../../types/common';
+import apiClient from "../client";
+import type { ApiResponse } from "../../types/common";
 
-import type { Province, District, Ward } from '../../types/location';
+import type { Province, District, Ward } from "../../types/location";
 
 export const locationApi = {
   getAllProvinces: () =>
-    apiClient.get<ApiResponse<Province[]>>('/location/provinces'),
+    apiClient.get<ApiResponse<Province[]>>("/location/provinces"),
 
   getAllDistricts: () =>
-    apiClient.get<ApiResponse<District[]>>('/location/districts'),
+    apiClient.get<ApiResponse<District[]>>("/location/districts"),
 
-  getAllWards: () =>
-    apiClient.get<ApiResponse<Ward[]>>('/location/wards'),
+  getAllWards: () => apiClient.get<ApiResponse<Ward[]>>("/location/wards"),
 
   getDistrictsByProvinceCode: (provinceCode: string) =>
-    apiClient.get<ApiResponse<District[]>>(`/location/districts/${provinceCode}`),
+    apiClient.get<ApiResponse<District[]>>(
+      `/location/districts/${provinceCode}`,
+    ),
 
   getWardsByDistrictCode: (districtCode: string) =>
-    apiClient.get<ApiResponse<Ward[]>>(`/location/wards/${districtCode}`)
+    apiClient.get<ApiResponse<Ward[]>>(`/location/wards/${districtCode}`),
 };

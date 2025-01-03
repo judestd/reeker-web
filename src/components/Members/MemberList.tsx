@@ -52,7 +52,8 @@ const MemberList: React.FC<MemberListProps> = ({
         { text: "Active", value: true },
         { text: "Inactive", value: false },
       ],
-      onFilter: (value: string, record: User) => record.isActive === (value === 'true'),
+      onFilter: (value: string, record: User) =>
+        record.isActive === (value === "true"),
     },
     {
       title: "Join Date",
@@ -60,7 +61,10 @@ const MemberList: React.FC<MemberListProps> = ({
       key: "joinDate",
       sorter: (a: User, b: User) => {
         if (!a.joinedDepartmentAt || !b.joinedDepartmentAt) return 0;
-        return new Date(a.joinedDepartmentAt).getTime() - new Date(b.joinedDepartmentAt).getTime();
+        return (
+          new Date(a.joinedDepartmentAt).getTime() -
+          new Date(b.joinedDepartmentAt).getTime()
+        );
       },
       className: "text-gray-600",
     },
