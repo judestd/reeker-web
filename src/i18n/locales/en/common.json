@@ -20,5 +20,12 @@
   },
   "pagination": {
     "total": "Total {total}"
-  }
+  },
+  "errors": {
+    "saveFailed": "Save Failed. Please try again"
+  },
+  "selectProvince": "Select Province",
+  "selectDistrict": "Select District",
+  "selectWard": "Select Ward",
+  "createdAt": "Created At"
 }

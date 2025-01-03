@@ -3,6 +3,7 @@ import auth from "./auth.json";
 import dashboard from "./dashboard.json";
 import departments from "./departments.json";
 import realEstateSource from "./realEstateSource.json";
+import users from "./users.json";
 
 export default {
   common,
@@ -10,4 +11,5 @@ export default {
   dashboard,
   departments,
   realEstateSource,
+  users,
 };

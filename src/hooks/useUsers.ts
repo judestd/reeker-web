@@ -4,8 +4,10 @@ import { notification } from "antd";
 import { userApi } from "../api/endpoints/user";
 import type { User, CreateUserInput, UpdateUserInput } from "../types/user";
 import { PaginationMetadata } from "../types/common";
+import { useTranslation } from "react-i18next";
 
 export const useUsers = () => {
+  const { t } = useTranslation();
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
   const [pagination, setPagination] = useState<PaginationMetadata | null>(null);
@@ -31,15 +33,14 @@ export const useUsers = () => {
     try {
       await userApi.createUser(data);
       notification.success({
-        message: "Success",
-        description: "User created successfully",
+        message: t("users:messages.createSuccess"),
       });
       fetchUsers(); // Refresh list
       return true;
     } catch (error) {
       notification.error({
-        message: "Error",
-        description: "Failed to create user",
+        message: t("users:messages.error.create"),
+        description: t("users:messages.error.create"),
       });
       return false;
     } finally {
@@ -52,15 +53,14 @@ export const useUsers = () => {
     try {
       await userApi.updateUser(id, data);
       notification.success({
-        message: "Success",
-        description: "User updated successfully",
+        message: t("users:messages.updateSuccess"),
       });
       fetchUsers(); // Refresh list
       return true;
     } catch (error) {
       notification.error({
-        message: "Error",
-        description: "Failed to update user",
+        message: t("users:messages.error.update"),
+        description: t("users:messages.error.update"),
       });
       return false;
     } finally {
@@ -73,15 +73,14 @@ export const useUsers = () => {
     try {
       await userApi.deleteUser(id);
       notification.success({
-        message: "Success",
-        description: "User deleted successfully",
+        message: t("users:messages.deleteSuccess"),
       });
       fetchUsers(); // Refresh list
       return true;
     } catch (error) {
       notification.error({
-        message: "Error",
-        description: "Failed to delete user",
+        message: t("users:messages.error.delete"),
+        description: t("users:messages.error.delete"),
       });
       return false;
     } finally {

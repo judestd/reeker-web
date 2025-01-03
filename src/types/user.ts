@@ -9,6 +9,8 @@ export enum Role {
   DEPARTMENT_MANAGER = "department_manager", // Trưởng phòng
 }
 
+export const privilegeRoles = [Role.ADMIN, Role.SUPER_ADMIN];
+
 export const Name_Role = {
   [Role.SUPER_ADMIN]: "Super Admin",
   [Role.ADMIN]: "Admin",
@@ -18,6 +20,12 @@ export const Name_Role = {
   [Role.CUSTOMER_MANAGER]: "Quản lý đầu khách",
   [Role.DEPARTMENT_MANAGER]: "Trưởng phòng",
 };
+
+export enum Gender {
+  MALE = "male",
+  FEMALE = "female",
+  OTHER = "other",
+}
 
 export interface User {
   id: string;

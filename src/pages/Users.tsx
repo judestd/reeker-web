@@ -1,7 +1,7 @@
-// src/pages/Users.tsx
 import React, { useState } from "react";
 import { Button, Table, Form } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 import { useUsers } from "../hooks/useUsers";
 import { columns } from "./Users/columns";
 import UserForm from "../components/Users/UserForm";
@@ -11,8 +11,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 
 const Users: React.FC = () => {
+  const { t } = useTranslation();
   const { user } = useSelector((state: RootState) => state.auth);
-
   const {
     users,
     loading,
@@ -60,31 +60,34 @@ const Users: React.FC = () => {
   return (
     <div className="p-6">
       <div className="mb-4 flex justify-between">
-        <h1 className="text-2xl">Users</h1>
+        <h1 className="text-2xl">{t("users:title")}</h1>
         <Button
           type="primary"
           icon={<PlusOutlined />}
           onClick={() => setFormVisible(true)}
         >
-          Create User
+          {t("users:createUser")}
         </Button>
       </div>
 
-      <Table
-        columns={columns({
-          onEdit: (user) => setEditingUser(user),
-          onDelete: handleDelete,
-        })}
-        dataSource={users}
-        loading={loading}
-        pagination={{
-          current: pagination?.page,
-          pageSize: pagination?.limit,
-          total: pagination?.totalDocs,
-          onChange: (page, pageSize) => fetchUsers(page, pageSize),
-        }}
-        rowKey="id"
-      />
+      <div style={{ overflowX: "auto" }}>
+        <Table
+          columns={columns({
+            onEdit: (user) => setEditingUser(user),
+            onDelete: handleDelete,
+            t,
+          })}
+          dataSource={users}
+          loading={loading}
+          pagination={{
+            current: pagination?.page,
+            pageSize: pagination?.limit,
+            total: pagination?.totalDocs,
+            onChange: (page, pageSize) => fetchUsers(page, pageSize),
+          }}
+          rowKey="id"
+        />
+      </div>
 
       <UserForm
         open={formVisible}

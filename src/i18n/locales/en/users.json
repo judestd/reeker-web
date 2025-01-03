@@ -1,0 +1,51 @@
+{
+  "title": "Users",
+  "createUser": "Create User",
+  "editUser": "Edit User",
+  "deleteUser": {
+    "title": "Delete User",
+    "description": "Are you sure you want to delete this user?"
+  },
+  "fields": {
+    "fullName": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone",
+    "role": "Role",
+    "status": "Status",
+    "gender": "Gender",
+    "birthDay": "Birthday",
+    "department": "Department",
+    "facebook": "Facebook",
+    "zalo": "Zalo",
+    "address": "Address"
+  },
+  "validation": {
+    "fullName": "Please enter full name",
+    "email": "Please enter a valid email",
+    "password": "Please enter password",
+    "phone": "Please enter phone number",
+    "role": "Please select role",
+    "department": "Please select department"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female",
+    "other": "Other"
+  },
+  "messages": {
+    "createSuccess": "User created successfully",
+    "updateSuccess": "User updated successfully",
+    "deleteSuccess": "User deleted successfully",
+    "error": {
+      "create": "Failed to create user",
+      "update": "Failed to update user",
+      "delete": "Failed to delete user",
+      "fetch": "Failed to fetch users"
+    }
+  }
+}

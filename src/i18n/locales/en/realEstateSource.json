@@ -10,5 +10,6 @@
   "deleteConfirm": "Are you sure you want to delete this source?",
   "deleteSuccess": "Source deleted successfully",
   "updateSuccess": "Source updated successfully",
-  "createSuccess": "Source created successfully"
+  "createSuccess": "Source created successfully",
+  "areaRequired": "Please select at least one area"
 } 

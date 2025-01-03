@@ -12,6 +12,7 @@ import {
   BellOutlined,
   LogoutOutlined,
   BankOutlined,
+  TeamOutlined,
 } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
@@ -60,7 +61,7 @@ const DashboardLayout: React.FC = () => {
             },
             {
               key: "/departments",
-              icon: <BankOutlined />,
+              icon: <TeamOutlined />,
               label: t("common:nav.departments"),
               onClick: () => navigate("/departments"),
             },

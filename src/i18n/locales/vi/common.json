@@ -20,5 +20,12 @@
   },
   "pagination": {
     "total": "Tổng {total}"
-  }
+  },
+  "errors": {
+    "saveFailed": "Có lỗi xảy ra khi lưu. Vui lòng thử lại."
+  },
+  "selectProvince": "Chọn Tỉnh",
+  "selectDistrict": "Chọn Huyện",
+  "selectWard": "Chọn Xã",
+  "createdAt": "Ngày tạo"
 }

@@ -2,6 +2,8 @@
 import axios from "axios";
 import { getStoredToken, removeStoredToken } from "../utils/auth";
 import { API_CONFIG } from "./config";
+import { store } from "../store";
+import { logout } from "../store/slices/authSlice";
 
 const apiClient = axios.create(API_CONFIG);
 
@@ -21,6 +23,7 @@ apiClient.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       removeStoredToken();
+      store.dispatch(logout());
       window.location.href = "/login";
     }
     return Promise.reject(error);

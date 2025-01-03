@@ -10,5 +10,6 @@
   "deleteConfirm": "Bạn có chắc chắn muốn xóa nguồn này?",
   "deleteSuccess": "Xóa nguồn thành công",
   "updateSuccess": "Cập nhật nguồn thành công",
-  "createSuccess": "Tạo nguồn thành công"
+  "createSuccess": "Tạo nguồn thành công",
+  "areaRequired": "Vui lòng chọn ít nhất một khu vực"
 } 

@@ -1,0 +1,51 @@
+{
+  "title": "Người dùng",
+  "createUser": "Tạo người dùng",
+  "editUser": "Sửa người dùng",
+  "deleteUser": {
+    "title": "Xóa người dùng",
+    "description": "Bạn có chắc chắn muốn xóa người dùng này?"
+  },
+  "fields": {
+    "fullName": "Họ và tên",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "phone": "Số điện thoại",
+    "role": "Vai trò",
+    "status": "Trạng thái",
+    "gender": "Giới tính",
+    "birthDay": "Ngày sinh",
+    "department": "Phòng ban",
+    "facebook": "Facebook",
+    "zalo": "Zalo",
+    "address": "Địa chỉ"
+  },
+  "validation": {
+    "fullName": "Vui lòng nhập họ và tên",
+    "email": "Vui lòng nhập email hợp lệ",
+    "password": "Vui lòng nhập mật khẩu",
+    "phone": "Vui lòng nhập số điện thoại",
+    "role": "Vui lòng chọn vai trò",
+    "department": "Vui lòng chọn phòng ban"
+  },
+  "status": {
+    "active": "Hoạt động",
+    "inactive": "Không hoạt động"
+  },
+  "gender": {
+    "male": "Nam",
+    "female": "Nữ",
+    "other": "Khác"
+  },
+  "messages": {
+    "createSuccess": "Tạo người dùng thành công",
+    "updateSuccess": "Cập nhật người dùng thành công",
+    "deleteSuccess": "Xóa người dùng thành công",
+    "error": {
+      "create": "Không thể tạo người dùng",
+      "update": "Không thể cập nhật người dùng",
+      "delete": "Không thể xóa người dùng",
+      "fetch": "Không thể tải danh sách người dùng"
+    }
+  }
+}
