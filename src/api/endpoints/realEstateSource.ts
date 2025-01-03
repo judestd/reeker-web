@@ -1,5 +1,4 @@
 import {
-  ApiDataResponse,
   ApiResponse,
   PaginationParams,
 } from "../../types/common";
@@ -12,7 +11,7 @@ import apiClient from "../client";
 
 export const realEstateSourceApi = {
   getAll: (params: PaginationParams) =>
-    apiClient.get<ApiDataResponse<RealEstateSource[]>>(`/real-estate-source`, {
+    apiClient.get<ApiResponse<RealEstateSource[]>>(`/real-estate-source`, {
       params,
     }),
 
