@@ -17,8 +17,8 @@ import { useSelector } from "react-redux";
 
 // Lazy loaded components
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
-const Teams = React.lazy(() => import("./pages/Teams"));
-const Members = React.lazy(() => import("./pages/Members"));
+// const Teams = React.lazy(() => import("./pages/Teams"));
+// const Members = React.lazy(() => import("./pages/Members"));
 const Users = React.lazy(() => import("./pages/Users"));
 const Notifications = React.lazy(() => import("./pages/Notifications"));
 const Login = React.lazy(() => import("./pages/Login"));
@@ -29,7 +29,7 @@ const RealEstateSource = React.lazy(() => import("./pages/RealEstateSource"));
 // PublicRoute component
 function PublicRoute({ children }: { children: React.ReactNode }) {
   const isAuthenticated = useSelector(
-    (state: RootState) => state.auth.isAuthenticated,
+    (state: RootState) => state.auth.isAuthenticated
   );
 
   return isAuthenticated ? <Navigate to="/dashboard" replace /> : children;
@@ -56,8 +56,8 @@ function App() {
                   }
                 >
                   <Route path="dashboard" element={<Dashboard />} />
-                  <Route path="teams" element={<Teams />} />
-                  <Route path="members" element={<Members />} />
+                  {/* <Route path="teams" element={<Teams />} />
+                  <Route path="members" element={<Members />} /> */}
                   <Route path="users" element={<Users />} />
                   <Route path="notifications" element={<Notifications />} />
                   <Route path="departments" element={<Departments />} />

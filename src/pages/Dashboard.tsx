@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import PageHeader from "../components/common/PageHeader";
-import DashboardStats from "../components/Dashboard/DashboardStats";
+// import DashboardStats from "../components/Dashboard/DashboardStats";
 
 const Dashboard: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
