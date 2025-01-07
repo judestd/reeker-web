@@ -2,11 +2,8 @@ import {
   ApiResponse,
   PaginationParams,
 } from "../../types/common";
-import {
-  CreateRealEstateSourceInput,
-  RealEstateSource,
-  UpdateRealEstateSourceInput,
-} from "../../types/realEstateSource";
+import { CreateRealEstateSourceInput, UpdateRealEstateSourceInput } from "../../types/realEstateSource";
+import { RealEstateSource } from "../../types/realEstateSource";
 import apiClient from "../client";
 
 export const realEstateSourceApi = {

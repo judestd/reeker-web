@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
-import { Modal, Form, Input, DatePicker } from "antd";
+import React, { useEffect, useState } from "react";
+import { Modal, Form, Input, DatePicker, Select, message } from "antd";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
+import { userApi } from "../../api/endpoints/user";
+import { User } from "../../types/user";
+import { Department } from "../../types/department";
 
 interface EditDepartmentModalProps {
   visible: boolean;
-  department: any | null;
+  department: Department | null;
   onCancel: () => void;
-  onSave: (values: any) => void;
+  onSave: (values: Department) => void;
 }
 
 const EditDepartmentModal: React.FC<EditDepartmentModalProps> = ({
@@ -18,12 +21,46 @@ const EditDepartmentModal: React.FC<EditDepartmentModalProps> = ({
 }) => {
   const [form] = Form.useForm();
   const { t } = useTranslation();
+  const [users, setUsers] = useState<Partial<User>[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    if (visible) {
+      fetchUsers();
+    }
+  }, [visible, page]);
+
+  const fetchUsers = async () => {
+    try {
+      setLoading(true);
+      const response = await userApi.getUsers({
+        page,
+        limit: 10,
+        isFreeDepartmentManager: 1,
+      });
+
+      const users = response.data.data;
+      setUsers((prevUsers) => {
+        if (page === 1 && department?.owner) {
+          return [department?.owner!, ...prevUsers, ...users];
+        }
+        return [...prevUsers, ...users];
+      });
+      setHasMore(page <= response.data.metadata.pagination.totalPages);
+    } catch (error) {
+      message.error(t("common:errors.fetchFailed"));
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (visible && department) {
       form.setFieldsValue({
         ...department,
-        foundation_date: dayjs(department.foundation_date),
+        foundationDate: dayjs(department.foundationDate),
       });
     } else {
       form.resetFields();
@@ -33,17 +70,13 @@ const EditDepartmentModal: React.FC<EditDepartmentModalProps> = ({
   const handleSubmit = (values: any) => {
     onSave({
       ...values,
-      foundation_date: values.foundation_date.toISOString(),
+      foundationDate: values.foundationDate.toISOString(),
     });
   };
 
   return (
     <Modal
-      title={
-        department
-          ? t("departments:editDepartment")
-          : t("departments:addDepartment")
-      }
+      title={department ? t("departments:edit") : t("departments:create")}
       open={visible}
       onCancel={onCancel}
       onOk={form.submit}
@@ -59,12 +92,45 @@ const EditDepartmentModal: React.FC<EditDepartmentModalProps> = ({
           <Input />
         </Form.Item>
 
+        <Form.Item name="description" label={t("departments:description")}>
+          <Input.TextArea />
+        </Form.Item>
+
         <Form.Item
-          name="foundation_date"
+          name="foundationDate"
           label={t("departments:foundationDate")}
           rules={[{ required: true, message: t("departments:dateRequired") }]}
         >
           <DatePicker style={{ width: "100%" }} />
+        </Form.Item>
+
+        <Form.Item
+          name="ownerId"
+          label={t("departments:owner")}
+          rules={[{ required: true, message: t("departments:ownerRequired") }]}
+        >
+          <Select
+            onPopupScroll={(e) => {
+              const target = e.target as HTMLDivElement;
+              if (
+                target.scrollTop + target.offsetHeight >=
+                  target.scrollHeight - 5 &&
+                hasMore &&
+                !loading
+              ) {
+                setPage((prevPage) => prevPage + 1);
+              }
+            }}
+            loading={loading}
+            listHeight={100}
+            listItemHeight={50}
+          >
+            {users.map((user) => (
+              <Select.Option key={user._id} value={user._id}>
+                {user.fullName}
+              </Select.Option>
+            ))}
+          </Select>
         </Form.Item>
       </Form>
     </Modal>

@@ -1,7 +1,7 @@
 {
-  "title": "Phòng Ban",
-  "addDepartment": "Thêm Phòng Ban",
-  "editDepartment": "Sửa Phòng Ban",
+  "title": "Phòng",
+  "create": "Thêm Phòng",
+  "edit": "Sửa Phòng",
   "name": "Tên",
   "foundationDate": "Ngày Thành Lập",
   "nameRequired": "Vui lòng nhập tên phòng ban",
@@ -10,5 +10,10 @@
   "deleteSuccess": "Xóa phòng ban thành công",
   "updateSuccess": "Cập nhật phòng ban thành công",
   "createSuccess": "Tạo phòng ban thành công",
-  "total": "Tổng số {total} phòng ban"
+  "total": "Tổng số {total} phòng ban",
+  "owner": "Chủ sở hữu",
+  "description": "Mô tả",
+  "status": "Trạng thái",
+  "statusUpdateSuccess": "Trạng thái phòng ban đã được cập nhật thành công",
+  "statusChangeConfirm": "Bạn có chắc chắn muốn thay đổi trạng thái phòng ban?"
 }

@@ -16,7 +16,9 @@
     "add": "Thêm",
     "actions": "Hành động",
     "yes": "Có",
-    "no": "Không"
+    "no": "Không",
+    "deactivate": "Hủy kích hoạt",
+    "activate": "Kích hoạt"
   },
   "pagination": {
     "total": "Tổng {total}"
@@ -27,5 +29,9 @@
   "selectProvince": "Chọn Tỉnh",
   "selectDistrict": "Chọn Huyện",
   "selectWard": "Chọn Xã",
-  "createdAt": "Ngày tạo"
+  "createdAt": "Ngày tạo",
+  "status": {
+    "active": "Hoạt động",
+    "inactive": "Không hoạt động"
+  }
 }

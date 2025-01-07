@@ -16,7 +16,9 @@
     "add": "Add",
     "actions": "Actions",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "deactivate": "Deactivate",
+    "activate": "Activate"
   },
   "pagination": {
     "total": "Total {total}"
@@ -27,5 +29,9 @@
   "selectProvince": "Select Province",
   "selectDistrict": "Select District",
   "selectWard": "Select Ward",
-  "createdAt": "Created At"
+  "createdAt": "Created At",
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive"
+  }
 }

@@ -10,5 +10,12 @@
   "deleteSuccess": "Department deleted successfully",
   "updateSuccess": "Department updated successfully",
   "createSuccess": "Department created successfully",
-  "total": "Total {total} departments"
+  "total": "Total {total} departments",
+  "create": "Create Department",
+  "edit": "Edit Department",
+  "owner": "Owner",
+  "description": "Description",
+  "status": "Status",
+  "statusUpdateSuccess": "Department status updated successfully",
+  "statusChangeConfirm": "Are you sure you want to change the department status?"
 } 

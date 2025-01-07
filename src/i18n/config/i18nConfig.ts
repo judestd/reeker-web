@@ -12,7 +12,7 @@ const i18nConfig = {
     escapeValue: false,
   },
   detection: {
-    order: ["localStorage", "navigator"],
+    order: ["localStorage"],
     caches: ["localStorage"],
   },
 };
