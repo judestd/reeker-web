@@ -1,75 +1,119 @@
-import React, { useState } from "react";
-import { Button, Card, message } from "antd";
-import { useTranslation } from "react-i18next";
+import React, { useEffect, useState } from "react";
+import { Button, message } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import { mockDepartments } from "../services/mockDepartmentService";
+import { useTranslation } from "react-i18next";
 import DepartmentList from "../components/Departments/DepartmentList";
+import { departmentApi } from "../api/endpoints/department";
 import EditDepartmentModal from "../components/Departments/EditDepartmentModal";
+import { Department } from "../types/department";
 
-const Departments: React.FC = () => {
+const DepartmentPage: React.FC = () => {
   const { t } = useTranslation();
-  const [departments, setDepartments] = useState(mockDepartments);
-  const [editingDepartment, setEditingDepartment] = useState<any>(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [departments, setDepartments] = useState<Department[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedDepartment, setSelectedDepartment] =
+    useState<Department | null>(null);
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 10,
+    total: 0,
+  });
 
-  const handleAdd = () => {
-    setEditingDepartment(null);
-    setIsModalVisible(true);
-  };
-
-  const handleEdit = (department: any) => {
-    setEditingDepartment(department);
-    setIsModalVisible(true);
-  };
-
-  const handleDelete = (id: string) => {
-    setDepartments(departments.filter((dept) => dept._id !== id));
-    message.success(t("departments:deleteSuccess"));
-  };
-
-  const handleSave = (values: any) => {
-    if (editingDepartment) {
-      // Edit
-      setDepartments(
-        departments.map((dept) =>
-          dept._id === editingDepartment._id ? { ...dept, ...values } : dept,
-        ),
-      );
-      message.success(t("departments:updateSuccess"));
-    } else {
-      // Add
-      const newDepartment = {
-        _id: Date.now().toString(),
-        ...values,
-      };
-      setDepartments([...departments, newDepartment]);
-      message.success(t("departments:createSuccess"));
+  const fetchDepartments = async () => {
+    try {
+      setLoading(true);
+      const response = await departmentApi.getAll({
+        page: pagination.current,
+        limit: pagination.pageSize,
+      });
+      setDepartments(response.data.data);
+      setPagination({
+        ...pagination,
+        total: response.data.metadata?.pagination?.totalDocs || 0,
+      });
+    } catch (error) {
+      message.error(t("common:errors.fetchFailed"));
+    } finally {
+      setLoading(false);
     }
-    setIsModalVisible(false);
+  };
+
+  useEffect(() => {
+    fetchDepartments();
+  }, [pagination.current, pagination.pageSize]);
+
+  const handleEdit = (department: Department) => {
+    setSelectedDepartment(department);
+    setModalVisible(true);
+  };
+
+  const handleStatusChange = async (id: string, isActive: boolean) => {
+    try {
+      await departmentApi.updateStatus(id, isActive);
+      message.success(t("departments:statusUpdateSuccess"));
+      fetchDepartments();
+    } catch (error) {
+      message.error(t("common:errors.updateFailed"));
+    }
+  };
+
+  const handleSave = async (values: any) => {
+    try {
+      if (selectedDepartment) {
+        await departmentApi.update(selectedDepartment._id, values);
+        message.success(t("departments:updateSuccess"));
+      } else {
+        await departmentApi.create(values);
+        message.success(t("departments:createSuccess"));
+      }
+      setModalVisible(false);
+      fetchDepartments();
+    } catch (error) {
+      message.error(t("common:errors.saveFailed"));
+    }
   };
 
   return (
-    <Card
-      title={t("departments:title")}
-      extra={
-        <Button type="primary" icon={<PlusOutlined />} onClick={handleAdd}>
-          {t("departments:addDepartment")}
+    <div>
+      <div className="mb-4 flex justify-between items-center">
+        <h1 className="text-2xl font-bold">{t("departments:title")}</h1>
+        <Button
+          type="primary"
+          icon={<PlusOutlined />}
+          onClick={() => {
+            setSelectedDepartment(null);
+            setModalVisible(true);
+          }}
+        >
+          {t("departments:create")}
         </Button>
-      }
-    >
-      <DepartmentList
-        departments={departments}
-        onEdit={handleEdit}
-        onDelete={handleDelete}
-      />
-      <EditDepartmentModal
-        visible={isModalVisible}
-        department={editingDepartment}
-        onCancel={() => setIsModalVisible(false)}
-        onSave={handleSave}
-      />
-    </Card>
+      </div>
+
+      <div className="overflow-x-auto">
+        <DepartmentList
+          departments={departments}
+          loading={loading}
+          onEdit={handleEdit}
+          onStatusChange={handleStatusChange}
+          pagination={{
+            ...pagination,
+            onChange: (page: number, pageSize: number) =>
+              setPagination({ ...pagination, current: page, pageSize }),
+          }}
+        />
+      </div>
+
+      {modalVisible && (
+        <EditDepartmentModal
+          visible={modalVisible}
+          department={selectedDepartment}
+          onCancel={() => setModalVisible(false)}
+          onSave={handleSave}
+        />
+      )}
+    </div>
   );
 };
 
-export default Departments;
+export default DepartmentPage;

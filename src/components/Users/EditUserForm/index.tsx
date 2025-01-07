@@ -39,7 +39,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({
 
   const handleSubmit = async (values: UpdateUserInput) => {
     if (user) {
-      await onSubmit(user.id, values);
+      await onSubmit(user._id, values);
     }
   };
 

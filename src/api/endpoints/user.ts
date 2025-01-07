@@ -7,7 +7,7 @@ import { API_VERSION } from "../config";
 export const userApi = {
   getMe: () => apiClient.get<ApiResponse<User>>(`${API_VERSION}/web/users/me`),
 
-  getUsers: (params: { page: number; limit: number }) =>
+  getUsers: (params: { page: number; limit: number; isFreeDepartmentManager?: number }) =>
     apiClient.get<ApiResponse<User[]>>(`${API_VERSION}/web/users`, { params }),
 
   createUser: (data: CreateUserInput) =>

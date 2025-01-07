@@ -29,7 +29,7 @@ const Users: React.FC = () => {
   const handleCreate = async (values: CreateUserInput) => {
     if (values.departmentId) {
       values.joinedDepartmentAt = new Date().toISOString();
-      values.joinedDepartmentBy = user?.id;
+      values.joinedDepartmentBy = user?._id;
     }
 
     const success = await createUser(values);
@@ -44,7 +44,7 @@ const Users: React.FC = () => {
   const handleUpdate = async (id: string, values: UpdateUserInput) => {
     if (values.departmentId) {
       values.joinedDepartmentAt = new Date().toISOString();
-      values.joinedDepartmentBy = user?.id;
+      values.joinedDepartmentBy = user?._id;
     }
 
     const success = await updateUser(id, values);
@@ -76,6 +76,7 @@ const Users: React.FC = () => {
             onEdit: (user) => setEditingUser(user),
             onDelete: handleDelete,
             t,
+            user: user!,
           })}
           dataSource={users}
           loading={loading}
@@ -85,7 +86,7 @@ const Users: React.FC = () => {
             total: pagination?.totalDocs,
             onChange: (page, pageSize) => fetchUsers(page, pageSize),
           }}
-          rowKey="id"
+          rowKey="_id"
         />
       </div>
 

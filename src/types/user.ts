@@ -11,7 +11,7 @@ export enum Role {
 
 export const privilegeRoles = [Role.ADMIN, Role.SUPER_ADMIN];
 
-export const Name_Role = {
+export const ROLE_NAME = {
   [Role.SUPER_ADMIN]: "Super Admin",
   [Role.ADMIN]: "Admin",
   [Role.OWNER]: "Đầu chủ",
@@ -28,7 +28,7 @@ export enum Gender {
 }
 
 export interface User {
-  id: string;
+  _id: string;
   fullName: string;
   email: string;
   phone?: string;

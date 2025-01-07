@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { Modal, Form, Input, Button, message } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import type { RealEstateSource } from "../../types/realEstateSource";
 import AreaLocationSelect from "../common/AreaLocationSelect";
+import { RealEstateSource } from "../../types/realEstateSource";
 
 interface EditRealEstateSourceModalProps {
   visible: boolean;

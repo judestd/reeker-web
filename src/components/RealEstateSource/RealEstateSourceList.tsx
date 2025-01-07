@@ -2,10 +2,10 @@ import React from "react";
 import { Table, Space, Button, Popconfirm } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import type { Area, RealEstateSource } from "../../types/realEstateSource";
 import dayjs from "dayjs";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
+import { Area, RealEstateSource } from "../../types/realEstateSource";
 
 interface RealEstateSourceListProps {
   sources: RealEstateSource[];
@@ -48,10 +48,10 @@ const RealEstateSourceList: React.FC<RealEstateSourceListProps> = ({
       title: t("realEstateSource:areas"),
       dataIndex: "area",
       key: "area",
-      render: (areas: RealEstateSource["area"]) => (
+      render: (areas: Area[]) => (
         <ul className="m-0 p-0">
-          {areas.map((area) => (
-            <li>{showArea(area)}</li>
+          {areas.map((area: Area, index: number) => (
+            <li key={index}>{showArea(area)}</li>
           ))}
         </ul>
       ),

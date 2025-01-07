@@ -1,9 +1,10 @@
-import React from "react";
-import { Form, Input, Select, DatePicker } from "antd";
+import React, { useState, useEffect } from "react";
+import { Form, Input, Select, DatePicker, message } from "antd";
 import { useTranslation } from "react-i18next";
 import LocationSelect from "../../common/LocationSelect";
-import { Role, Name_Role, privilegeRoles } from "../../../types/user";
-import { mockDepartments } from "../../../services/mockDepartmentService";
+import { Role, ROLE_NAME, privilegeRoles } from "../../../types/user";
+import { Department } from "../../../types/department";
+import { departmentApi } from "../../../api/endpoints/department";
 
 interface UserFormFieldsProps {
   form: any;
@@ -12,6 +13,43 @@ interface UserFormFieldsProps {
 
 const UserFormFields: React.FC<UserFormFieldsProps> = ({ form, isEditing }) => {
   const { t } = useTranslation();
+  const [departments, setDepartments] = useState<Department[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    fetchDepartments();
+  }, [page]);
+
+  const fetchDepartments = async () => {
+    try {
+      setLoading(true);
+      const response = await departmentApi.getAll({
+        page,
+        limit: 10,
+      });
+
+      const departments = response.data.data;
+      setDepartments((prevDepartments) => [...prevDepartments, ...departments]);
+      setHasMore(page <= response.data.metadata.pagination.totalPages);
+    } catch (error) {
+      message.error(t("common:errors.fetchFailed"));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const onPopupScroll = (e: any) => {
+    const target = e.target as HTMLDivElement;
+    if (
+      target.scrollTop + target.offsetHeight >= target.scrollHeight - 5 &&
+      hasMore &&
+      !loading
+    ) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
 
   return (
     <>
@@ -25,8 +63,13 @@ const UserFormFields: React.FC<UserFormFieldsProps> = ({ form, isEditing }) => {
           },
         ]}
       >
-        <Select placeholder={t("users:fields.department")}>
-          {mockDepartments.map((dept) => (
+        <Select
+          onPopupScroll={onPopupScroll}
+          loading={loading}
+          listHeight={100}
+          listItemHeight={50}
+        >
+          {departments.map((dept) => (
             <Select.Option key={dept._id} value={dept._id}>
               {dept.name}
             </Select.Option>
@@ -86,7 +129,7 @@ const UserFormFields: React.FC<UserFormFieldsProps> = ({ form, isEditing }) => {
             .filter(([_, value]) => !privilegeRoles.includes(value))
             .map(([_, value]) => (
               <Select.Option key={value} value={value}>
-                {Name_Role[value]}
+                {ROLE_NAME[value]}
               </Select.Option>
             ))}
         </Select>
