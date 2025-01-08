@@ -1,0 +1,12 @@
+{
+  "title": "Quản lý Thẻ",
+  "create": "Tạo Thẻ",
+  "edit": "Chỉnh sửa Thẻ",
+  "id": "ID",
+  "name": "Tên",
+  "nameRequired": "Vui lòng nhập tên thẻ",
+  "deleteConfirm": "Bạn có chắc chắn muốn xóa thẻ này không?",
+  "createSuccess": "Thẻ đã được tạo thành công",
+  "updateSuccess": "Thẻ đã được cập nhật thành công",
+  "deleteSuccess": "Thẻ đã được xóa thành công"
+} 

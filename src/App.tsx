@@ -25,6 +25,8 @@ const Login = React.lazy(() => import("./pages/Login"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Departments = React.lazy(() => import("./pages/Department"));
 const RealEstateSource = React.lazy(() => import("./pages/RealEstateSource"));
+const Tags = React.lazy(() => import("./pages/Tags"));
+const RealEstateTypes = React.lazy(() => import("./pages/RealEstateType"));
 
 // PublicRoute component
 function PublicRoute({ children }: { children: React.ReactNode }) {
@@ -65,6 +67,8 @@ function App() {
                     path="realEstateSource"
                     element={<RealEstateSource />}
                   />
+                  <Route path="tags" element={<Tags />} />
+                  <Route path="real-estate-types" element={<RealEstateTypes />} />
                 </Route>
                 <Route
                   path="/login"

@@ -1,0 +1,12 @@
+{
+  "title": "Real Estate Types Management",
+  "create": "Create Real Estate Type",
+  "edit": "Edit Real Estate Type",
+  "id": "ID",
+  "name": "Name",
+  "nameRequired": "Please enter real estate type name",
+  "deleteConfirm": "Are you sure you want to delete this real estate type?",
+  "createSuccess": "Real estate type created successfully",
+  "updateSuccess": "Real estate type updated successfully",
+  "deleteSuccess": "Real estate type deleted successfully"
+} 
