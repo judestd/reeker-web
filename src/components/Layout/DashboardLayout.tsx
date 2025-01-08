@@ -13,6 +13,8 @@ import {
   LogoutOutlined,
   BankOutlined,
   TeamOutlined,
+  TagsOutlined,
+  HomeOutlined,
 } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
@@ -76,6 +78,18 @@ const DashboardLayout: React.FC = () => {
               icon: <BellOutlined />,
               label: t("common:nav.notifications"),
               onClick: () => navigate("/notifications"),
+            },
+            {
+              key: "/tags",
+              icon: <TagsOutlined />,
+              label: t("tags:title"),
+              onClick: () => navigate("/tags"),
+            },
+            {
+              key: "/real-estate-types",
+              icon: <HomeOutlined />,
+              label: t("realEstateType:title"),
+              onClick: () => navigate("/real-estate-types"),
             },
             {
               key: "logout",

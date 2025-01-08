@@ -5,22 +5,23 @@ import {
 import { CreateRealEstateSourceInput, UpdateRealEstateSourceInput } from "../../types/realEstateSource";
 import { RealEstateSource } from "../../types/realEstateSource";
 import apiClient from "../client";
+import { API_VERSION } from "../config";
 
 export const realEstateSourceApi = {
   getAll: (params: PaginationParams) =>
-    apiClient.get<ApiResponse<RealEstateSource[]>>(`/real-estate-source`, {
+    apiClient.get<ApiResponse<RealEstateSource[]>>(`${API_VERSION}/web/real-estate-source`, {
       params,
     }),
 
   create: (data: CreateRealEstateSourceInput) =>
-    apiClient.post<ApiResponse<RealEstateSource>>(`/real-estate-source`, data),
+    apiClient.post<ApiResponse<RealEstateSource>>(`${API_VERSION}/web/real-estate-source`, data),
 
   update: (id: string, data: UpdateRealEstateSourceInput) =>
     apiClient.put<ApiResponse<RealEstateSource>>(
-      `/real-estate-source/${id}`,
+      `${API_VERSION}/web/real-estate-source/${id}`,
       data,
     ),
 
   delete: (id: string) =>
-    apiClient.delete<ApiResponse<void>>(`/real-estate-source/${id}`),
+    apiClient.delete<ApiResponse<void>>(`${API_VERSION}/web/real-estate-source/${id}`),
 };
