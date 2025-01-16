@@ -4,11 +4,10 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { Department } from "../../../types/department";
 import {
-  EditRounded,
   BlockRounded,
   CheckCircleRounded,
   EditOutlined,
-  PowerSettingsNewRounded,
+  PowerSettingsNewRounded
 } from '@mui/icons-material';
 import type { AlignType } from 'rc-table/lib/interface';
 import styles from '../../../styles/common.module.css';

@@ -1,12 +1,8 @@
 import React from 'react';
-import { Dropdown, Typography } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Dropdown } from 'antd';
 import { useTranslation } from 'react-i18next';
 import {
-  PersonOutlineRounded,
-  TimelineRounded,
-  StarOutlineRounded,
-  SettingsOutlined,
+  PersonOutlineRounded, SettingsOutlined,
   LogoutRounded
 } from '@mui/icons-material';
 import { User } from '../../types/user';

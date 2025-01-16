@@ -20,7 +20,6 @@ import {
   CategoryRounded,
 } from '@mui/icons-material';
 import styles from './Sidebar.module.css';
-import { ROLE_NAME } from "../../types/user";
 import UserMenu from './UserMenu';
 
 const { Header, Sider, Content } = Layout;
