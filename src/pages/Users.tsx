@@ -60,7 +60,7 @@ const Users: React.FC = () => {
   return (
     <div className="p-1">
       <div className="mb-4 flex justify-between">
-        <h1 className="text-2xl">{t("users:title")}</h1>
+        <h1 className="text-2xl font-bold">{t("users:title")}</h1>
         <Button
           type="primary"
           icon={<PlusOutlined />}

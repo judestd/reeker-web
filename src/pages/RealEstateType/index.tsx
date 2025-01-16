@@ -83,7 +83,7 @@ const RealEstateTypes: React.FC = () => {
   return (
     <div>
       <div className="flex justify-between mb-4">
-        <h1>{t("realEstateType:title")}</h1>
+        <h1 className="text-2xl font-bold">{t("realEstateType:title")}</h1>
         <Button
           type="primary"
           icon={<PlusOutlined />}

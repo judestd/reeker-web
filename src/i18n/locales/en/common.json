@@ -7,7 +7,9 @@
     "notifications": "Notifications",
     "realEstateSource": "Real Estate Source",
     "realEstateArea": "Real Estate Area",
-    "departments": "Departments"
+    "departments": "Departments",
+    "tags": "Tags",
+    "realEstateTypes": "Property Types"
   },
   "menu": {
     "mainMenu": "MAIN MENU",
@@ -36,6 +38,7 @@
   "selectDistrict": "Select District",
   "selectWard": "Select Ward",
   "createdAt": "Created At",
+  "updatedAt": "Updated At",
   "status": {
     "active": "Active",
     "inactive": "Inactive"

@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Space, Button, Popconfirm } from "antd";
+import { Table, Space, Tooltip, Popconfirm } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
@@ -24,7 +24,6 @@ const TagList: React.FC<TagListProps> = ({
 
   const columns = [
     {
-    //   title: t("tags:id"),
       dataIndex: "index",
       key: "index",
       render: (_: any, __: Tag, index: number) => index + 1,
@@ -50,24 +49,24 @@ const TagList: React.FC<TagListProps> = ({
     {
       title: t("common:actions.actions"),
       key: "actions",
+      width: 120,
       render: (_: any, record: Tag) => (
-        <Space>
-          <Button
-            type="primary"
-            icon={<EditOutlined />}
-            onClick={() => onEdit(record)}
-          >
-            {t("common:actions.edit")}
-          </Button>
+        <Space size="middle">
+          <Tooltip title={t("common:actions.edit")}>
+            <EditOutlined
+              className="text-blue-600 cursor-pointer text-lg"
+              onClick={() => onEdit(record)}
+            />
+          </Tooltip>
           <Popconfirm
             title={t("tags:deleteConfirm")}
             onConfirm={() => onDelete(record._id)}
             okText={t("common:actions.yes")}
             cancelText={t("common:actions.no")}
           >
-            <Button danger icon={<DeleteOutlined />}>
-              {t("common:actions.delete")}
-            </Button>
+            <Tooltip title={t("common:actions.delete")}>
+              <DeleteOutlined className="text-red-600 cursor-pointer text-lg" />
+            </Tooltip>
           </Popconfirm>
         </Space>
       ),

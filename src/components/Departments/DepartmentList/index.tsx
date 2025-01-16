@@ -8,7 +8,7 @@ import {
   BlockRounded,
   CheckCircleRounded,
   EditOutlined,
-  DeleteOutlined,
+  PowerSettingsNewRounded,
 } from '@mui/icons-material';
 import type { AlignType } from 'rc-table/lib/interface';
 import styles from '../../../styles/common.module.css';
@@ -21,7 +21,6 @@ interface DepartmentListProps {
   onEdit: (department: Department) => void;
   onStatusChange: (id: string, isActive: boolean) => void;
   pagination: any;
-  onDelete: (id: string) => void;
 }
 
 const DepartmentList: React.FC<DepartmentListProps> = ({
@@ -30,7 +29,6 @@ const DepartmentList: React.FC<DepartmentListProps> = ({
   onEdit,
   onStatusChange,
   pagination,
-  onDelete,
 }) => {
   const { t } = useTranslation();
 
@@ -73,7 +71,7 @@ const DepartmentList: React.FC<DepartmentListProps> = ({
       title: t("departments:description"),
       dataIndex: "description",
       key: "description",
-      width: '30%',
+      width: '25%',
       render: (description: string) => (
         <Paragraph ellipsis={{ rows: 2 }} className="mb-0 text-gray-600">
           {description || "-"}
@@ -84,7 +82,7 @@ const DepartmentList: React.FC<DepartmentListProps> = ({
       title: t("departments:status"),
       dataIndex: "isActive",
       key: "isActive",
-      width: 120,
+      width: 150,
       align: 'center' as AlignType,
       render: (isActive: boolean) => (
         <Tag
@@ -119,16 +117,26 @@ const DepartmentList: React.FC<DepartmentListProps> = ({
             />
           </Tooltip>
           <Popconfirm
-            title={t("departments:deleteConfirm")}
-            onConfirm={() => onDelete(record._id)}
+            title={t("departments:statusChangeConfirm")}
+            onConfirm={() => onStatusChange(record._id, !record.isActive)}
             okText={t("common:actions.yes")}
             cancelText={t("common:actions.no")}
           >
-            <Tooltip title={t("common:actions.delete")}>
+            <Tooltip 
+              title={record.isActive ? t("common:actions.deactivate") : t("common:actions.activate")}
+            >
               <Button
                 type="text"
-                icon={<DeleteOutlined className={styles.tableIcon} />}
-                className="!p-0 !w-8 !h-8 !flex !items-center !justify-center hover:!bg-red-50 !text-red-600"
+                icon={
+                  <PowerSettingsNewRounded 
+                    className={`${styles.tableIcon} ${record.isActive ? '!text-red-600' : '!text-green-600'}`}
+                  />
+                }
+                className={`!p-0 !w-8 !h-8 !flex !items-center !justify-center ${
+                  record.isActive 
+                    ? 'hover:!bg-red-50 !text-red-600' 
+                    : 'hover:!bg-green-50 !text-green-600'
+                }`}
               />
             </Tooltip>
           </Popconfirm>

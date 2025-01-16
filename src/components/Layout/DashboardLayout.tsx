@@ -16,6 +16,8 @@ import {
   MenuRounded,
   MenuOpenRounded,
   LocationOnRounded,
+  LocalOfferRounded,
+  CategoryRounded,
 } from '@mui/icons-material';
 import styles from './Sidebar.module.css';
 import { ROLE_NAME } from "../../types/user";
@@ -45,16 +47,10 @@ const DashboardLayout: React.FC = () => {
           onClick: () => navigate("/dashboard"),
         },
         {
-          key: "/realEstateSource",
-          icon: <ApartmentRounded className={styles.menuIcon} />,
-          label: <span className={styles.menuText}>{t("common:nav.realEstateSource")}</span>,
-          onClick: () => navigate("/realEstateSource"),
-        },
-        {
-          key: "/realEstateArea",
-          icon: <LocationOnRounded className={styles.menuIcon} />,
-          label: <span className={styles.menuText}>{t("common:nav.realEstateArea")}</span>,
-          onClick: () => navigate("/realEstateArea"),
+          key: "/notifications",
+          icon: <NotificationsRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.notifications")}</span>,
+          onClick: () => navigate("/notifications"),
         },
       ]
     },
@@ -76,10 +72,28 @@ const DashboardLayout: React.FC = () => {
           onClick: () => navigate("/users"),
         },
         {
-          key: "/notifications",
-          icon: <NotificationsRounded className={styles.menuIcon} />,
-          label: <span className={styles.menuText}>{t("common:nav.notifications")}</span>,
-          onClick: () => navigate("/notifications"),
+          key: "/real-estate-types",
+          icon: <CategoryRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.realEstateTypes")}</span>,
+          onClick: () => navigate("/real-estate-types"),
+        },
+        {
+          key: "/realEstateSource",
+          icon: <ApartmentRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.realEstateSource")}</span>,
+          onClick: () => navigate("/realEstateSource"),
+        },
+        {
+          key: "/realEstateArea",
+          icon: <LocationOnRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.realEstateArea")}</span>,
+          onClick: () => navigate("/realEstateArea"),
+        },
+        {
+          key: "/tags",
+          icon: <LocalOfferRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.tags")}</span>,
+          onClick: () => navigate("/tags"),
         },
       ]
     }

@@ -7,7 +7,9 @@
     "notifications": "Thông báo",
     "realEstateSource": "Nguồn BĐS",
     "realEstateArea": "Khu Vực BĐS",
-    "departments": "Phòng"
+    "departments": "Phòng",
+    "tags": "Thẻ",
+    "realEstateTypes": "Loại hình BĐS"
   },
   "menu": {
     "mainMenu": "MENU CHÍNH",
@@ -36,6 +38,7 @@
   "selectDistrict": "Chọn Huyện",
   "selectWard": "Chọn Xã",
   "createdAt": "Ngày tạo",
+  "updatedAt": "Ngày cập nhật",
   "status": {
     "active": "Hoạt động",
     "inactive": "Không hoạt động"
