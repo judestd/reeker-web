@@ -6,7 +6,15 @@
     "users": "Users",
     "notifications": "Notifications",
     "realEstateSource": "Real Estate Source",
-    "departments": "Departments"
+    "realEstateArea": "Real Estate Area",
+    "departments": "Departments",
+    "tags": "Tags",
+    "realEstateTypes": "Property Types"
+  },
+  "menu": {
+    "mainMenu": "MAIN MENU",
+    "management": "MANAGEMENT",
+    "account": "ACCOUNT"
   },
   "actions": {
     "edit": "Edit",
@@ -30,8 +38,15 @@
   "selectDistrict": "Select District",
   "selectWard": "Select Ward",
   "createdAt": "Created At",
+  "updatedAt": "Updated At",
   "status": {
     "active": "Active",
     "inactive": "Inactive"
+  },
+  "userMenu": {
+    "viewProfile": "View my profile",
+    "editProfile": "Edit Profile",
+    "accountSettings": "Account Settings",
+    "signOut": "Sign Out"
   }
 }

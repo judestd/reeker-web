@@ -1,0 +1,15 @@
+{
+  "title": "Real Estate Areas",
+  "create": "Create Area",
+  "edit": "Edit Area",
+  "name": "Name",
+  "area": "Area",
+  "areas": "Areas",
+  "addArea": "Add Area",
+  "nameRequired": "Please enter area name",
+  "deleteConfirm": "Are you sure you want to delete this area?",
+  "deleteSuccess": "Area deleted successfully",
+  "updateSuccess": "Area updated successfully",
+  "createSuccess": "Area created successfully",
+  "areaRequired": "Please select at least one area"
+} 

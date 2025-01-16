@@ -1,6 +1,6 @@
 {
   "title": "Người dùng",
-  "createUser": "Tạo người dùng",
+  "createUser": "Thêm người dùng",
   "editUser": "Sửa người dùng",
   "deleteUser": {
     "title": "Xóa người dùng",
@@ -38,14 +38,19 @@
     "other": "Khác"
   },
   "messages": {
-    "createSuccess": "Tạo người dùng thành công",
+    "createSuccess": "Thêm người dùng thành công",
     "updateSuccess": "Cập nhật người dùng thành công",
     "deleteSuccess": "Xóa người dùng thành công",
     "error": {
-      "create": "Không thể tạo người dùng",
+      "create": "Không thể thêm người dùng",
       "update": "Không thể cập nhật người dùng",
       "delete": "Không thể xóa người dùng",
       "fetch": "Không thể tải danh sách người dùng"
     }
+  },
+  "sections": {
+    "accountInfo": "Thông tin tài khoản",
+    "personalInfo": "Thông tin cá nhân",
+    "socialMedia": "Mạng xã hội"
   }
 }

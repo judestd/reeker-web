@@ -13,7 +13,7 @@
   "total": "Total {total} departments",
   "create": "Create Department",
   "edit": "Edit Department",
-  "owner": "Owner",
+  "owner": "Department Manager",
   "description": "Description",
   "status": "Status",
   "statusUpdateSuccess": "Department status updated successfully",

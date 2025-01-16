@@ -1,0 +1,15 @@
+{
+  "title": "Khu Vực Bất Động Sản",
+  "create": "Thêm Khu Vực",
+  "edit": "Sửa Khu Vực",
+  "name": "Tên",
+  "area": "Khu Vực",
+  "areas": "Khu Vực",
+  "addArea": "Thêm Khu Vực",
+  "nameRequired": "Vui lòng nhập tên khu vực",
+  "deleteConfirm": "Bạn có chắc chắn muốn xóa khu vực này?",
+  "deleteSuccess": "Xóa khu vực thành công",
+  "updateSuccess": "Cập nhật khu vực thành công",
+  "createSuccess": "Thêm khu vực thành công",
+  "areaRequired": "Vui lòng chọn ít nhất một khu vực"
+} 

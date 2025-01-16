@@ -1,0 +1,68 @@
+.avatar-uploader {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.avatar-uploader .ant-upload {
+  width: 100% !important;
+  height: 0 !important;
+  padding-bottom: 100% !important;
+  border-radius: 8px;
+  background-color: #fafafa;
+  border: 2px dashed #d9d9d9;
+}
+
+.avatar-uploader .ant-upload:hover {
+  border-color: #1890ff;
+}
+
+.avatar-uploader .ant-upload-text {
+  margin-top: 8px;
+  color: #666;
+}
+
+.form-section {
+  margin-bottom: 24px;
+}
+
+.form-section-title {
+  color: #1f2937;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.form-divider {
+  border-right: 1px solid #e5e7eb;
+  height: 100%;
+}
+
+.ant-input-prefix {
+  margin-right: 8px;
+}
+
+.ant-select-selection-item {
+  display: flex;
+  align-items: center;
+}
+
+.ant-form-item-label {
+  font-weight: 500;
+}
+
+.section-title {
+  position: relative;
+  padding-left: 12px;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 16px;
+  background-color: #6366f1;
+  border-radius: 2px;
+} 

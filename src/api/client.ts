@@ -20,11 +20,15 @@ apiClient.interceptors.request.use(
 
 apiClient.interceptors.response.use(
   (response) => response,
-  (error) => {
+  async (error) => {
     if (error.response?.status === 401 && error.config.url !== "/api/v1/web/auth/login") {
+      // Clear all auth related state
       removeStoredToken();
       store.dispatch(logout());
-      window.location.href = "/login";
+      
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 1000);
       return;
     }
     return Promise.reject(error);

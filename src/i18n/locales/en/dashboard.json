@@ -1,8 +1,10 @@
 {
   "welcome": "Welcome, {{name}}!",
   "stats": {
-    "totalTeams": "Total Teams",
-    "totalMembers": "Total Members",
-    "activeMembers": "Active Members"
+    "totalDepartments": "Total Departments",
+    "totalUsers": "Total Users",
+    "activeUsers": "Active Users",
+    "inactiveUsers": "Inactive Users",
+    "totalRealEstateSources": "Total Real Estate Sources"
   }
 }

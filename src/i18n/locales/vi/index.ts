@@ -4,6 +4,8 @@ import dashboard from "./dashboard.json";
 import departments from "./departments.json";
 import realEstateSource from "./realEstateSource.json";
 import users from "./users.json";
+import realEstateArea from "./realEstateArea.json";
+
 import tags from "./tags.json";
 import realEstateType from "./realEstateType.json";
 export default {
@@ -13,6 +15,7 @@ export default {
   departments,
   realEstateSource,
   users,
+  realEstateArea,
   tags,
   realEstateType,
 };

@@ -1,0 +1,49 @@
+.container {
+  @apply w-full;
+}
+
+.header {
+  @apply flex justify-between items-center mb-8;
+}
+
+.searchContainer {
+  @apply relative;
+}
+
+.searchInput {
+  @apply w-64 px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent;
+}
+
+.createButton {
+  @apply px-6 py-2 bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white rounded-lg 
+    hover:from-[#5558E5] hover:to-[#4238D9] transition-all duration-200 
+    shadow-md hover:shadow-lg font-medium;
+}
+
+.statsGrid {
+  @apply mt-6;
+}
+
+.statCard {
+  @apply bg-white rounded-xl shadow-sm p-6 h-full;
+}
+
+.statContent {
+  @apply flex justify-between items-start;
+}
+
+.statInfo {
+  @apply flex-1;
+}
+
+.statTitle {
+  @apply text-gray-500 text-sm font-medium mb-2;
+}
+
+.statValue {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.statIcon {
+  @apply w-12 h-12 rounded-lg flex items-center justify-center text-white text-xl;
+} 

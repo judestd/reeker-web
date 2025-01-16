@@ -47,5 +47,10 @@
       "delete": "Failed to delete user",
       "fetch": "Failed to fetch users"
     }
+  },
+  "sections": {
+    "accountInfo": "Account Information",
+    "personalInfo": "Personal Information",
+    "socialMedia": "Social Media"
   }
 }

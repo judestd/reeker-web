@@ -17,14 +17,13 @@ import { useSelector } from "react-redux";
 
 // Lazy loaded components
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
-// const Teams = React.lazy(() => import("./pages/Teams"));
-// const Members = React.lazy(() => import("./pages/Members"));
 const Users = React.lazy(() => import("./pages/Users"));
 const Notifications = React.lazy(() => import("./pages/Notifications"));
 const Login = React.lazy(() => import("./pages/Login"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Departments = React.lazy(() => import("./pages/Department"));
 const RealEstateSource = React.lazy(() => import("./pages/RealEstateSource"));
+const RealEstateArea = React.lazy(() => import("./pages/RealEstateArea"));
 const Tags = React.lazy(() => import("./pages/Tags"));
 const RealEstateTypes = React.lazy(() => import("./pages/RealEstateType"));
 
@@ -58,8 +57,6 @@ function App() {
                   }
                 >
                   <Route path="dashboard" element={<Dashboard />} />
-                  {/* <Route path="teams" element={<Teams />} />
-                  <Route path="members" element={<Members />} /> */}
                   <Route path="users" element={<Users />} />
                   <Route path="notifications" element={<Notifications />} />
                   <Route path="departments" element={<Departments />} />
@@ -67,6 +64,7 @@ function App() {
                     path="realEstateSource"
                     element={<RealEstateSource />}
                   />
+                  <Route path="realEstateArea" element={<RealEstateArea />} />
                   <Route path="tags" element={<Tags />} />
                   <Route path="real-estate-types" element={<RealEstateTypes />} />
                 </Route>

@@ -6,7 +6,15 @@
     "users": "Người dùng",
     "notifications": "Thông báo",
     "realEstateSource": "Nguồn BĐS",
-    "departments": "Phòng"
+    "realEstateArea": "Khu Vực BĐS",
+    "departments": "Phòng",
+    "tags": "Thẻ",
+    "realEstateTypes": "Loại hình BĐS"
+  },
+  "menu": {
+    "mainMenu": "MENU CHÍNH",
+    "management": "QUẢN LÝ",
+    "account": "TÀI KHOẢN"
   },
   "actions": {
     "edit": "Sửa",
@@ -30,8 +38,15 @@
   "selectDistrict": "Chọn Huyện",
   "selectWard": "Chọn Xã",
   "createdAt": "Ngày tạo",
+  "updatedAt": "Ngày cập nhật",
   "status": {
     "active": "Hoạt động",
     "inactive": "Không hoạt động"
+  },
+  "userMenu": {
+    "viewProfile": "Xem hồ sơ",
+    "editProfile": "Chỉnh sửa hồ sơ",
+    "accountSettings": "Cài đặt tài khoản",
+    "signOut": "Đăng xuất"
   }
 }

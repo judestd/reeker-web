@@ -1,12 +1,12 @@
 {
-  "title": "Quản lý Loại Bất Động Sản",
-  "create": "Tạo Loại Bất Động Sản",
-  "edit": "Chỉnh sửa Loại Bất Động Sản",
+  "title": "Loại hình BĐS",
+  "create": "Thêm loại hình BĐS",
+  "edit": "Chỉnh sửa loại hình BĐS",
   "id": "ID",
   "name": "Tên",
-  "nameRequired": "Vui lòng nhập tên loại bất động sản",
-  "deleteConfirm": "Bạn có chắc chắn muốn xóa loại bất động sản này không?",
-  "createSuccess": "Tạo loại bất động sản thành công",
-  "updateSuccess": "Cập nhật loại bất động sản thành công",
-  "deleteSuccess": "Xóa loại bất động sản thành công"
+  "nameRequired": "Vui lòng nhập tên loại hình BĐS",
+  "deleteConfirm": "Bạn có chắc chắn muốn xóa loại hình BĐS này không?",
+  "createSuccess": "Thêm loại hình BĐS thành công",
+  "updateSuccess": "Cập nhật loại hình BĐS thành công",
+  "deleteSuccess": "Xóa loại hình BĐS thành công"
 } 

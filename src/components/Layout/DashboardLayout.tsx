@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,17 +7,24 @@ import LanguageSwitcher from "../../i18n/components/LanguageSwitcher";
 import { RootState } from "../../store";
 import { logout } from "../../store/slices/authSlice";
 import {
-  DashboardOutlined,
-  UserOutlined,
-  BellOutlined,
-  LogoutOutlined,
-  BankOutlined,
-  TeamOutlined,
-  TagsOutlined,
-  HomeOutlined,
-} from "@ant-design/icons";
+  DashboardRounded,
+  PersonRounded,
+  NotificationsRounded,
+  ApartmentRounded,
+  Groups2Rounded,
+  SearchRounded,
+  MenuRounded,
+  MenuOpenRounded,
+  LocationOnRounded,
+  LocalOfferRounded,
+  CategoryRounded,
+} from '@mui/icons-material';
+import styles from './Sidebar.module.css';
+import { ROLE_NAME } from "../../types/user";
+import UserMenu from './UserMenu';
 
 const { Header, Sider, Content } = Layout;
+const { Title } = Typography;
 
 const DashboardLayout: React.FC = () => {
   const { t } = useTranslation();
@@ -27,99 +34,131 @@ const DashboardLayout: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
   const [collapsed, setCollapsed] = useState(false);
 
+  const menuItems = [
+    {
+      type: 'group' as const,
+      label: t("common:menu.mainMenu"),
+      key: 'main',
+      children: [
+        {
+          key: "/dashboard",
+          icon: <DashboardRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.dashboard")}</span>,
+          onClick: () => navigate("/dashboard"),
+        },
+        {
+          key: "/notifications",
+          icon: <NotificationsRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.notifications")}</span>,
+          onClick: () => navigate("/notifications"),
+        },
+      ]
+    },
+    {
+      type: 'group' as const,
+      label: t("common:menu.management"),
+      key: 'management',
+      children: [
+        {
+          key: "/departments",
+          icon: <Groups2Rounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.departments")}</span>,
+          onClick: () => navigate("/departments"),
+        },
+        {
+          key: "/users",
+          icon: <PersonRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.users")}</span>,
+          onClick: () => navigate("/users"),
+        },
+        {
+          key: "/real-estate-types",
+          icon: <CategoryRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.realEstateTypes")}</span>,
+          onClick: () => navigate("/real-estate-types"),
+        },
+        {
+          key: "/realEstateSource",
+          icon: <ApartmentRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.realEstateSource")}</span>,
+          onClick: () => navigate("/realEstateSource"),
+        },
+        {
+          key: "/realEstateArea",
+          icon: <LocationOnRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.realEstateArea")}</span>,
+          onClick: () => navigate("/realEstateArea"),
+        },
+        {
+          key: "/tags",
+          icon: <LocalOfferRounded className={styles.menuIcon} />,
+          label: <span className={styles.menuText}>{t("common:nav.tags")}</span>,
+          onClick: () => navigate("/tags"),
+        },
+      ]
+    }
+  ];
+
   if (!user) return null;
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
+      <Sider 
+        collapsed={collapsed} 
+        className={styles.sidebar}
+        width={250}
+        collapsedWidth={70}
+        trigger={null}
+      >
+        <div className={`${styles.logo} ${collapsed ? styles.logoCollapsed : ''}`}>
+          {collapsed ? (
+            <Title level={2} className={styles.logoTextCollapsed} style={{color: 'white', marginBottom: '0px'}}>
+              R
+            </Title>
+          ) : (
+            <Title level={2} className={styles.logoText} style={{color: 'white', marginBottom: '0px'}}>
+              Reeker
+            </Title>
+          )}
+        </div>
         <Menu
           theme="dark"
           mode="inline"
           selectedKeys={[location.pathname]}
-          items={[
-            {
-              key: "/dashboard",
-              icon: <DashboardOutlined />,
-              label: t("common:nav.dashboard"),
-              onClick: () => navigate("/dashboard"),
-            },
-            // {
-            //   key: "/teams",
-            //   icon: <TeamOutlined />,
-            //   label: t("common:nav.teams"),
-            //   onClick: () => navigate("/teams"),
-            // },
-            // {
-            //   key: "/members",
-            //   icon: <UserOutlined />,
-            //   label: t("common:nav.members"),
-            //   onClick: () => navigate("/members"),
-            // },
-            {
-              key: "/realEstateSource",
-              icon: <BankOutlined />,
-              label: t("common:nav.realEstateSource"),
-              onClick: () => navigate("/realEstateSource"),
-            },
-            {
-              key: "/departments",
-              icon: <TeamOutlined />,
-              label: t("common:nav.departments"),
-              onClick: () => navigate("/departments"),
-            },
-            {
-              key: "/users",
-              icon: <UserOutlined />,
-              label: t("common:nav.users"),
-              onClick: () => navigate("/users"),
-            },
-            {
-              key: "/notifications",
-              icon: <BellOutlined />,
-              label: t("common:nav.notifications"),
-              onClick: () => navigate("/notifications"),
-            },
-            {
-              key: "/tags",
-              icon: <TagsOutlined />,
-              label: t("tags:title"),
-              onClick: () => navigate("/tags"),
-            },
-            {
-              key: "/real-estate-types",
-              icon: <HomeOutlined />,
-              label: t("realEstateType:title"),
-              onClick: () => navigate("/real-estate-types"),
-            },
-            {
-              key: "logout",
-              icon: <LogoutOutlined />,
-              label: t("auth:logout"),
-              onClick: () => {
-                dispatch(logout());
-                navigate("/login");
-              },
-            },
-          ]}
+          className={styles.menu}
+          items={menuItems}
         />
       </Sider>
       <Layout>
-        <Header
-          style={{
-            padding: "0 16px",
-            background: "#fff",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-end",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        <Header className={styles.header}>
+          <div className="flex items-center gap-6">
+            <button 
+              onClick={() => setCollapsed(!collapsed)}
+              className={styles.toggleButton}
+            >
+              {collapsed ? <MenuOpenRounded /> : <MenuRounded />}
+            </button>
+            <div className="bg-gray-100 rounded-lg flex items-center w-[320px]">
+              <SearchRounded className="text-gray-400 ml-3" />
+              <input
+                placeholder="Search..."
+                className="bg-transparent border-0 outline-none w-full h-10 px-3"
+              />
+            </div>
+          </div>
+          <div className="flex items-center gap-6">
             <LanguageSwitcher />
-            <span>{t("dashboard:welcome", { name: user?.fullName })}</span>
+            <UserMenu 
+              user={user} 
+              onLogout={() => {
+                dispatch(logout());
+                navigate("/login");
+              }}
+            />
           </div>
         </Header>
-        <Content style={{ margin: "16px" }}>
-          <div style={{ padding: 24, minHeight: 360, background: "#fff" }}>
+        <Content className="m-1">
+          <div className="bg-gray-50 min-h-[calc(100vh-120px)] rounded-lg p-6">
             <Outlet />
           </div>
         </Content>
