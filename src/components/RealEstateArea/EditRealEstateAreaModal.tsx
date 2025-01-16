@@ -1,0 +1,122 @@
+import React, { useEffect } from "react";
+import { Modal, Form, Input, Button, message } from "antd";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
+import AreaLocationSelect from "../common/AreaLocationSelect";
+import { RealEstateArea } from "../../types/realEstateArea";
+
+interface EditRealEstateAreaModalProps {
+  visible: boolean;
+  area: RealEstateArea | null;
+  onCancel: () => void;
+  onSave: (values: any) => void;
+}
+
+const EditRealEstateAreaModal: React.FC<EditRealEstateAreaModalProps> = ({
+  visible,
+  area,
+  onCancel,
+  onSave,
+}) => {
+  const [form] = Form.useForm();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    if (visible && area) {
+      form.setFieldsValue(area);
+    } else {
+      form.resetFields();
+    }
+  }, [visible, area, form]);
+
+  const handleSubmit = (values: any) => {
+    if (
+      !values?.area?.length ||
+      values?.area?.filter((area: any) => !area?.province_code).length > 0
+    ) {
+      message.error(t("realEstateArea:areaRequired"));
+      return;
+    }
+    onSave(values);
+  };
+
+  return (
+    <Modal
+      title={area ? t("realEstateArea:edit") : t("realEstateArea:create")}
+      open={visible}
+      onCancel={onCancel}
+      width={800}
+      footer={[
+        <Button key="cancel" onClick={onCancel}>
+          {t("common:actions.cancel")}
+        </Button>,
+        <Button key="submit" type="primary" onClick={() => form.submit()}>
+          {t("common:actions.save")}
+        </Button>,
+      ]}
+    >
+      <Form form={form} layout="vertical" onFinish={handleSubmit}>
+        <Form.Item
+          name="name"
+          label={t("realEstateArea:name")}
+          rules={[
+            { required: true, message: t("realEstateArea:nameRequired") },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.List name="area">
+          {(fields, { add, remove }) => (
+            <div className="space-y-4">
+              {fields.map((field, index) => (
+                <div
+                  key={field.key}
+                  className="relative bg-gray-50 p-6 rounded-lg"
+                >
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="font-medium">
+                      {index === 0 && (
+                        <>
+                          {t("realEstateArea:area")}
+                          <span className="text-red-500 ml-1">*</span>
+                        </>
+                      )}
+                    </div>
+                    {fields.length > 1 && (
+                      <Button
+                        type="text"
+                        danger
+                        onClick={() => remove(field.name)}
+                        className="flex items-center gap-1"
+                      >
+                        <MinusCircleOutlined />
+                        {t("common:actions.delete")}
+                      </Button>
+                    )}
+                  </div>
+                  <Form.Item {...field} required={false} className="mb-0">
+                    <AreaLocationSelect form={form} fieldName={[field.name]} />
+                  </Form.Item>
+                </div>
+              ))}
+
+              <Form.Item>
+                <Button
+                  type="dashed"
+                  onClick={() => add()}
+                  block
+                  icon={<PlusOutlined />}
+                >
+                  {t("realEstateArea:addArea")}
+                </Button>
+              </Form.Item>
+            </div>
+          )}
+        </Form.List>
+      </Form>
+    </Modal>
+  );
+};
+
+export default EditRealEstateAreaModal; 

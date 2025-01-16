@@ -3,6 +3,7 @@ import { Form, Modal } from "antd";
 import { useTranslation } from "react-i18next";
 import { CreateUserInput } from "../../../types/user";
 import UserFormFields from "./UserFormFields";
+import styles from '../../../styles/common.module.css';
 
 interface UserFormProps {
   open: boolean;
@@ -35,11 +36,18 @@ const UserForm: React.FC<UserFormProps> = ({
       onCancel={onCancel}
       onOk={form.submit}
       confirmLoading={loading}
-      width={720}
+      width="80%"
       okText={t("common:actions.save")}
       cancelText={t("common:actions.cancel")}
+      centered
+      okButtonProps={{ className: styles.primaryButton }}
     >
-      <Form form={form} layout="vertical" onFinish={handleFinish}>
+      <Form 
+        form={form} 
+        layout="vertical" 
+        onFinish={handleFinish}
+        className="mt-4"
+      >
         <UserFormFields form={form} />
       </Form>
     </Modal>

@@ -6,7 +6,13 @@
     "users": "Người dùng",
     "notifications": "Thông báo",
     "realEstateSource": "Nguồn BĐS",
+    "realEstateArea": "Khu Vực BĐS",
     "departments": "Phòng"
+  },
+  "menu": {
+    "mainMenu": "MENU CHÍNH",
+    "management": "QUẢN LÝ",
+    "account": "TÀI KHOẢN"
   },
   "actions": {
     "edit": "Sửa",
@@ -33,5 +39,11 @@
   "status": {
     "active": "Hoạt động",
     "inactive": "Không hoạt động"
+  },
+  "userMenu": {
+    "viewProfile": "Xem hồ sơ",
+    "editProfile": "Chỉnh sửa hồ sơ",
+    "accountSettings": "Cài đặt tài khoản",
+    "signOut": "Đăng xuất"
   }
 }

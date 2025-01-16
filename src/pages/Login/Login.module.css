@@ -1,0 +1,27 @@
+.loginPage {
+  @apply min-h-screen flex flex-col items-center justify-center bg-gray-50;
+}
+
+.languageSwitcher {
+  @apply absolute top-4 right-4;
+}
+
+.loginCard {
+  @apply w-full max-w-[440px] shadow-lg rounded-lg;
+}
+
+.title {
+  @apply text-[#6366f1] m-0;
+}
+
+.subtitle {
+  @apply text-gray-500 mt-2 block;
+}
+
+.input {
+  @apply rounded-lg;
+}
+
+.submitButton {
+  @apply w-full h-11 bg-[#6366f1] hover:bg-[#4f46e5] rounded-lg text-base font-medium;
+} 

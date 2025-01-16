@@ -6,7 +6,13 @@
     "users": "Users",
     "notifications": "Notifications",
     "realEstateSource": "Real Estate Source",
+    "realEstateArea": "Real Estate Area",
     "departments": "Departments"
+  },
+  "menu": {
+    "mainMenu": "MAIN MENU",
+    "management": "MANAGEMENT",
+    "account": "ACCOUNT"
   },
   "actions": {
     "edit": "Edit",
@@ -33,5 +39,11 @@
   "status": {
     "active": "Active",
     "inactive": "Inactive"
+  },
+  "userMenu": {
+    "viewProfile": "View my profile",
+    "editProfile": "Edit Profile",
+    "accountSettings": "Account Settings",
+    "signOut": "Sign Out"
   }
 }

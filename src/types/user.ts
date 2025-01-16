@@ -98,10 +98,3 @@ export interface UpdateUserInput {
   joinedDepartmentBy?: string;
   departmentId?: string;
 }
-
-export interface Team {
-  id: any;
-  name: string;
-  members: string[];
-  createdAt: string;
-}

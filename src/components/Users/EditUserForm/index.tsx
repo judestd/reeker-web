@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { User, UpdateUserInput } from "../../../types/user";
 import UserFormFields from "../UserForm/UserFormFields";
 import dayjs from "dayjs";
+import styles from '../../../styles/common.module.css';
 
 interface EditUserFormProps {
   open: boolean;
@@ -50,11 +51,18 @@ const EditUserForm: React.FC<EditUserFormProps> = ({
       onCancel={onCancel}
       onOk={form.submit}
       confirmLoading={loading}
-      width={720}
+      width="80%"
       okText={t("common:actions.save")}
       cancelText={t("common:actions.cancel")}
+      centered
+      okButtonProps={{ className: styles.primaryButton }}
     >
-      <Form form={form} layout="vertical" onFinish={handleSubmit}>
+      <Form 
+        form={form} 
+        layout="vertical" 
+        onFinish={handleSubmit}
+        className="mt-4"
+      >
         <UserFormFields form={form} isEditing={true} />
       </Form>
     </Modal>

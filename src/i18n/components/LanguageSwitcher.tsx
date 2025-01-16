@@ -16,10 +16,29 @@ const LanguageSwitcher: React.FC = () => {
     <Select
       value={i18n.language as Languages}
       onChange={handleChange}
-      style={{ width: 120 }}
+      style={{ width: 140 }}
+      className="!flex items-center"
     >
-      <Option value="vi">Tiếng Việt</Option>
-      <Option value="en">English</Option>
+      <Option value="vi">
+        <div className="flex items-center gap-2">
+          <img 
+            src="/images/flags/vi.svg" 
+            alt="Tiếng Việt" 
+            className="w-5 h-4 object-cover"
+          />
+          Tiếng Việt
+        </div>
+      </Option>
+      <Option value="en">
+        <div className="flex items-center gap-2">
+          <img 
+            src="/images/flags/en.svg" 
+            alt="English" 
+            className="w-5 h-4 object-cover"
+          />
+          English
+        </div>
+      </Option>
     </Select>
   );
 };

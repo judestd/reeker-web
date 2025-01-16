@@ -3,36 +3,57 @@ import { Table, Space, Button, Popconfirm, Tooltip } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
-import { RealEstateSource } from "../../types/realEstateSource";
-import type { AlignType } from 'rc-table/lib/interface';
+import { RootState } from "../../store";
+import { useSelector } from "react-redux";
+import { Area, RealEstateArea } from "../../types/realEstateArea";
 
-interface RealEstateSourceListProps {
-  sources: RealEstateSource[];
+interface RealEstateAreaListProps {
+  areas: RealEstateArea[];
   loading?: boolean;
-  onEdit: (source: RealEstateSource) => void;
+  onEdit: (area: RealEstateArea) => void;
   onDelete: (id: string) => void;
   pagination: any;
 }
 
-const RealEstateSourceList: React.FC<RealEstateSourceListProps> = ({
-  sources,
+const RealEstateAreaList: React.FC<RealEstateAreaListProps> = ({
+  areas,
   loading,
   onEdit,
   onDelete,
   pagination,
 }) => {
   const { t } = useTranslation();
+  const { provinces, districts, wards } = useSelector(
+    (state: RootState) => state.location,
+  );
+
+  const showArea = (area: Area) => {
+    const province = provinces.find((p) => p.code === area.province_code);
+    const district = districts.find((d) => d.code === area.district_code);
+    const ward = wards.find((w) => w.code === area.ward_code);
+
+    return [ward?.fullName, district?.fullName, province?.fullName]
+      .filter((value) => value)
+      .join(" - ");
+  };
 
   const columns = [
     {
-      title: t("realEstateSource:name"),
+      title: t("realEstateArea:name"),
       dataIndex: "name",
       key: "name",
     },
     {
-      title: t("realEstateSource:description"),
-      dataIndex: "description",
-      key: "description",
+      title: t("realEstateArea:areas"),
+      dataIndex: "area",
+      key: "area",
+      render: (areas: Area[]) => (
+        <ul className="m-0 p-0">
+          {areas.map((area: Area, index: number) => (
+            <li key={index}>{showArea(area)}</li>
+          ))}
+        </ul>
+      ),
     },
     {
       title: t("common:createdAt"),
@@ -43,11 +64,8 @@ const RealEstateSourceList: React.FC<RealEstateSourceListProps> = ({
     {
       title: t("common:actions.actions"),
       key: "actions",
-      width: 150,
-      fixed: 'right' as const,
-      align: 'center' as AlignType,
-      render: (_: any, record: RealEstateSource) => (
-        <Space size={1} className="flex justify-center">
+      render: (_: any, record: RealEstateArea) => (
+        <Space>
           <Tooltip title={t("common:actions.edit")}>
             <Button
               type="text"
@@ -57,7 +75,7 @@ const RealEstateSourceList: React.FC<RealEstateSourceListProps> = ({
             />
           </Tooltip>
           <Popconfirm
-            title={t("realEstateSource:deleteConfirm")}
+            title={t("realEstateArea:deleteConfirm")}
             onConfirm={() => onDelete(record._id)}
             okText={t("common:actions.yes")}
             cancelText={t("common:actions.no")}
@@ -78,7 +96,7 @@ const RealEstateSourceList: React.FC<RealEstateSourceListProps> = ({
   return (
     <Table
       columns={columns}
-      dataSource={sources}
+      dataSource={areas}
       rowKey="_id"
       loading={loading}
       pagination={pagination}
@@ -86,4 +104,4 @@ const RealEstateSourceList: React.FC<RealEstateSourceListProps> = ({
   );
 };
 
-export default RealEstateSourceList;
+export default RealEstateAreaList; 

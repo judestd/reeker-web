@@ -1,0 +1,53 @@
+.primaryIcon {
+  color: #624bff !important;
+}
+
+.grayIcon {
+  color: #94a3b8 !important;
+}
+
+.successIcon {
+  color: #22c55e !important;
+}
+
+.dangerIcon {
+  color: #ef4444 !important;
+}
+
+.primaryButton {
+  background-color: #624bff !important;
+  border-color: #624bff !important;
+}
+
+.primaryButton:hover {
+  background-color: #5241d9 !important;
+  border-color: #5241d9 !important;
+}
+
+.formIcon {
+  font-size: 16px !important;
+  margin-right: 8px !important;
+}
+
+.tableIcon {
+  font-size: 18px !important;
+}
+
+.sectionTitle {
+  position: relative;
+  padding-left: 12px;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+.sectionTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 16px;
+  background-color: #624bff;
+  border-radius: 2px;
+} 

@@ -1,8 +1,10 @@
 {
   "welcome": "Chào mừng, {{name}}!",
   "stats": {
-    "totalTeams": "Tổng số nhóm",
-    "totalMembers": "Tổng số thành viên",
-    "activeMembers": "Thành viên đang hoạt động"
+    "totalDepartments": "Tổng số phòng ban",
+    "totalUsers": "Tổng số người dùng",
+    "activeUsers": "Người dùng đang hoạt động",
+    "inactiveUsers": "Người dùng không hoạt động",
+    "totalRealEstateSources": "Tổng số Nguồn Bất động sản"
   }
 }

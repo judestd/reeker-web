@@ -1,9 +1,10 @@
 // src/components/common/LocationSelect/index.tsx
 import React, { useState, useEffect } from "react";
-import { Form, Select } from "antd";
+import { Form, Select, Row, Col } from "antd";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { useTranslation } from "react-i18next";
+import { EnvironmentOutlined } from "@ant-design/icons";
 
 interface LocationSelectProps {
   required?: boolean;
@@ -60,53 +61,68 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ required, form }) => {
   );
 
   return (
-    <>
-      <Form.Item
-        name="province"
-        label={t("common:selectProvince")}
-        rules={[{ required: required, message: t("common:selectProvince") }]}
-      >
-        <Select
-          placeholder={t("common:selectProvince")}
-          onChange={handleProvinceChange}
-          options={provinces.map((p) => ({
-            label: p.name,
-            value: p.code,
-          }))}
-        />
-      </Form.Item>
+    <Row gutter={16}>
+      <Col span={8}>
+        <Form.Item
+          name="province"
+          label={t("common:selectProvince")}
+          rules={[{ required: required, message: t("common:selectProvince") }]}
+        >
+          <Select
+            placeholder={t("common:selectProvince")}
+            onChange={handleProvinceChange}
+            suffixIcon={<EnvironmentOutlined className="text-gray-400" />}
+          >
+            {provinces.map((p) => (
+              <Select.Option key={p.code} value={p.code}>
+                {p.name}
+              </Select.Option>
+            ))}
+          </Select>
+        </Form.Item>
+      </Col>
 
-      <Form.Item
-        name="district"
-        label={t("common:selectDistrict")}
-        rules={[{ required: required, message: t("common:selectDistrict") }]}
-      >
-        <Select
-          placeholder={t("common:selectDistrict")}
-          onChange={handleDistrictChange}
-          disabled={!selectedProvince}
-          options={filteredDistricts.map((d) => ({
-            label: d.name,
-            value: d.code,
-          }))}
-        />
-      </Form.Item>
+      <Col span={8}>
+        <Form.Item
+          name="district"
+          label={t("common:selectDistrict")}
+          rules={[{ required: required, message: t("common:selectDistrict") }]}
+        >
+          <Select
+            placeholder={t("common:selectDistrict")}
+            onChange={handleDistrictChange}
+            disabled={!selectedProvince}
+            suffixIcon={<EnvironmentOutlined className="text-gray-400" />}
+          >
+            {filteredDistricts.map((d) => (
+              <Select.Option key={d.code} value={d.code}>
+                {d.name}
+              </Select.Option>
+            ))}
+          </Select>
+        </Form.Item>
+      </Col>
 
-      <Form.Item
-        name="ward"
-        label={t("common:selectWard")}
-        rules={[{ required: required, message: t("common:selectWard") }]}
-      >
-        <Select
-          placeholder={t("common:selectWard")}
-          disabled={!selectedDistrict}
-          options={filteredWards.map((w) => ({
-            label: w.name,
-            value: w.code,
-          }))}
-        />
-      </Form.Item>
-    </>
+      <Col span={8}>
+        <Form.Item
+          name="ward"
+          label={t("common:selectWard")}
+          rules={[{ required: required, message: t("common:selectWard") }]}
+        >
+          <Select
+            placeholder={t("common:selectWard")}
+            disabled={!selectedDistrict}
+            suffixIcon={<EnvironmentOutlined className="text-gray-400" />}
+          >
+            {filteredWards.map((w) => (
+              <Select.Option key={w.code} value={w.code}>
+                {w.name}
+              </Select.Option>
+            ))}
+          </Select>
+        </Form.Item>
+      </Col>
+    </Row>
   );
 };
 

@@ -107,7 +107,7 @@ const EditDepartmentModal: React.FC<EditDepartmentModalProps> = ({
         <Form.Item
           name="ownerId"
           label={t("departments:owner")}
-          rules={[{ required: true, message: t("departments:ownerRequired") }]}
+          rules={[{ required: false, message: t("departments:ownerRequired") }]}
         >
           <Select
             onPopupScroll={(e) => {

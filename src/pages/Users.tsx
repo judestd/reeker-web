@@ -58,7 +58,7 @@ const Users: React.FC = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-1">
       <div className="mb-4 flex justify-between">
         <h1 className="text-2xl">{t("users:title")}</h1>
         <Button
