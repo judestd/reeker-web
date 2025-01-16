@@ -6,6 +6,8 @@ import realEstateSource from "./realEstateSource.json";
 import users from "./users.json";
 import realEstateArea from "./realEstateArea.json";
 
+import tags from "./tags.json";
+import realEstateType from "./realEstateType.json";
 export default {
   common,
   auth,
@@ -14,4 +16,6 @@ export default {
   realEstateSource,
   users,
   realEstateArea,
+  tags,
+  realEstateType,
 };

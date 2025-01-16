@@ -1,0 +1,12 @@
+{
+  "title": "Tags Management",
+  "create": "Create Tag",
+  "edit": "Edit Tag",
+  "id": "ID",
+  "name": "Name",
+  "nameRequired": "Please enter tag name",
+  "deleteConfirm": "Are you sure you want to delete this tag?",
+  "createSuccess": "Tag created successfully",
+  "updateSuccess": "Tag updated successfully",
+  "deleteSuccess": "Tag deleted successfully"
+} 

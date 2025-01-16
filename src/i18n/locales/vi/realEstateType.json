@@ -1,0 +1,12 @@
+{
+  "title": "Quản lý Loại Bất Động Sản",
+  "create": "Tạo Loại Bất Động Sản",
+  "edit": "Chỉnh sửa Loại Bất Động Sản",
+  "id": "ID",
+  "name": "Tên",
+  "nameRequired": "Vui lòng nhập tên loại bất động sản",
+  "deleteConfirm": "Bạn có chắc chắn muốn xóa loại bất động sản này không?",
+  "createSuccess": "Tạo loại bất động sản thành công",
+  "updateSuccess": "Cập nhật loại bất động sản thành công",
+  "deleteSuccess": "Xóa loại bất động sản thành công"
+} 
